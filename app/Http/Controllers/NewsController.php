@@ -28,16 +28,34 @@ class NewsController extends BaseController
 
     public function postNew(Request $request)
     {
-        
+//        dd($request);
+        $this->validate($request, News::$rules);
+
+        News::create($request->all());
+
+        return redirect()
+            ->action('NewsController@getIndex');
     }
 
-    public function getEdit(News $news)
+    public function getEdit($id)
     {
-        
+        $news = News::findOrFail($id);
+
+
+        return view('news.newsEdit', compact('news'));
     }
 
-    public function postEdit(Request $request)
+    public function postEdit(Request $request, $id)
     {
+        $news = News::findOrFail($id);
+
+        $this->validate($request, News::$rules);
+
+        $news->update($request->all());
+
+        return redirect()
+            ->action('NewsController@getEdit', [$news->id]);
+
         
     }
 
