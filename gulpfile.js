@@ -1,4 +1,8 @@
+process.env.DISABLE_NOTIFIER = true;
+
 var elixir = require('laravel-elixir');
+var bootstrapPath = 'node_modules/bootstrap-sass/assets';
+var jqueryJsPath = 'node_modules/jquery/dist/jquery.min.js';
 
 /*
  |--------------------------------------------------------------------------
@@ -12,5 +16,14 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.sass('app.scss');
+
+
+
+    mix.sass('app.scss')
+        .copy(bootstrapPath + '/fonts', 'public/build/fonts');
+
+    mix.browserify('app.js');
+
+    mix.version(['css/app.css',  'js/app.js']);
+
 });
