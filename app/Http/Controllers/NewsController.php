@@ -16,7 +16,7 @@ class NewsController extends BaseController
 
     public function getIndex()
     {
-        $newses = News::paginate(5);
+        $newses = News::paginate(6);
 
         return view('news.newsIndex', compact('newses'));
     }
