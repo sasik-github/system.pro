@@ -4,3 +4,9 @@ Homestead.yaml
 Homestead.json
 .env
 .idea
+
+# generated from GULP
+public/build
+public/css
+public/fonts
+public/js
