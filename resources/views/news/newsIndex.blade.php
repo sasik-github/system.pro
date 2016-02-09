@@ -27,7 +27,9 @@
     @endforeach
     </div>
 
-    <div class="row">
-        {!! $newses->links() !!}
+    <div class="row text-center">
+        <div class="">
+            {!! $newses->links() !!}
+        </div>
     </div>
 @endsection

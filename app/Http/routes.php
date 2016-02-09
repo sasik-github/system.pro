@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()
+    ->action('NewsController@getIndex');
 });
 
 /*
@@ -30,5 +31,6 @@ Route::group(['middleware' => ['web']], function () {
 
 
     Route::controller('news', 'NewsController');
+    Route::controller('about', 'AboutController');
 
 });
