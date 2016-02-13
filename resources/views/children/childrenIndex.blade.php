@@ -7,5 +7,6 @@
 @section('content')
 	@foreach($children as $child)
 		{{ $child->fio }}
+		{{ $child->class }}
 	@endforeach
 @endsection
