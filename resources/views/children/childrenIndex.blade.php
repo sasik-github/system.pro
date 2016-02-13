@@ -6,6 +6,6 @@
 
 @section('content')
 	@foreach($children as $child)
-		{{ $child->name }}
+		{{ $child->fio }}
 	@endforeach
 @endsection

@@ -1,12 +1,11 @@
-@extends('layout.main')
+@extends('layout.form')
 
 @section('title')
     Создать Новость
 @endsection
 
 
-@section('content')
-    @include('common.errors')
+@section('form')
     <div class="row">
         {!! Form::open(['action' => 'NewsController@postNew', 'class' => 'form']) !!}
 

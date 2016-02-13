@@ -1,12 +1,11 @@
-@extends('layout.main')
+@extends('layout.form')
 
 @section('title')
     Редактировать новость
 @endsection
 
 
-@section('content')
-    @include('common.errors')
+@section('form')
     <div class="row">
         {!! Form::model($news, ['action' => ['NewsController@postEdit', $news->id], 'class' => 'form']) !!}
 

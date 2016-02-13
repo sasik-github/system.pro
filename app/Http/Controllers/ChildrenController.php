@@ -25,8 +25,12 @@ class ChildrenController extends BaseController
 
 	public function postNew(Request $request)
 	{
-		// dd($request);
 
 		$this->validate($request, Child::$rules);
+
+		Child::create($request->all());
+
+		return redirect()
+			->action('ChildrenController@getIndex');
 	}
 }
