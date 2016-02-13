@@ -21,4 +21,9 @@ class Child extends BaseModel
         'city',
         'school_number',
     ];
+
+    public static $rules = [
+    	'fio' => 'required',
+    	'class' => 'required',
+    ];
 }
