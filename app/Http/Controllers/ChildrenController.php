@@ -33,4 +33,35 @@ class ChildrenController extends BaseController
 		return redirect()
 			->action('ChildrenController@getIndex');
 	}
+
+	public function getEdit(Request $request, $id)
+	{
+		$child = Child::findOrFail($id);
+
+		return view('children.childrenEdit',
+				compact('child')
+			);
+	}
+
+	public function postEdit(Request $request, $id)
+	{
+		$child = Child::findOrFail($id);
+		$this->validate($request, Child::$rules);
+
+		$child->update($request->all());
+
+		return redirect()
+			->action('ChildrenController@getIndex');
+	}
+
+	public function postDelete($id)
+	{
+		$child = Child::findOrFail($id);
+
+		$child->delete();
+
+		return redirect()
+			->action('ChildrenController@getIndex')
+			->with('message', 'Ребенок удален');
+	}
 }
