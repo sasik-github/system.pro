@@ -62,6 +62,6 @@ class ChildrenController extends BaseController
 
 		return redirect()
 			->action('ChildrenController@getIndex')
-			->with('message', 'Ребенок удален');
+			->with('flash_message', 'Ребенок удален');
 	}
 }

@@ -23,8 +23,17 @@
 				<td>{{ $child->fio }}</td>
 				<td>{{ $child->class }}</td>
 				<td>
-					<a href="{{ action('ChildrenController@getEdit', $child->id) }}">редактировать</a>
-					@include('children._childDeleteForm', ['child' => $child])
+					<div class="btn-group" role="group">
+						<!-- <div class="input-group-btn"> -->
+							<a href="{{ action('ChildrenController@getEdit', $child->id) }}" class="btn btn-default">редактировать</a>
+							<div>
+								@include('children._childDeleteForm', ['child' => $child])
+							</div>
+							
+						<!-- </div> -->
+					</div>
+					
+					
 				</td>
 			</tr>	
 			@endforeach

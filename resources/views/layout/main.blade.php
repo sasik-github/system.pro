@@ -26,9 +26,9 @@
     </div>
     <div class="container">
 
-        @if ($message) 
-            <div class="alert alert-info">
-                {{ $message }}
+        @if (Session::has('flash_message'))
+            <div class="alert alert-success">
+                {{ Session::get('flash_message') }}
             </div>
         @endif
 

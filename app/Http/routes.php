@@ -33,6 +33,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::controller('news', 'NewsController');
     Route::controller('about', 'AboutController');
     Route::controller('children', 'ChildrenController');
+    Route::controller('parents', 'ParentsController');
 
 });
 

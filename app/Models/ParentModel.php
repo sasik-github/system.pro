@@ -10,6 +10,10 @@ namespace App\Models;
 
 class ParentModel extends BaseModel
 {
+    public static $rules = [
+        'fio' => 'required',
+    ];
+
     protected $table = 'parents';
 
     protected $fillable = [
