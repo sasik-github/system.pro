@@ -15,6 +15,7 @@ class CreateTariffsTable extends Migration
         Schema::create('tariffs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->text('description');
             $table->float('price');
             $table->unsignedInteger('duration');
             $table->boolean('is_privileged')->default(false);
