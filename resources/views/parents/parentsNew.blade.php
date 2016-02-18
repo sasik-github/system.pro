@@ -20,7 +20,9 @@
 
         <div class="form-group">
             <label for="tariff_id">Тариф</label>
-            {!! Form::text('tariff_id', null, ['id' => 'tariff_id', 'class' => 'form-control']) !!}
+
+
+            {!! Form::select('tariff_id', $tariffs, null, ['id' => 'tariff_id', 'class' => 'form-control']) !!}
         </div>
 
         <div class="form-group">

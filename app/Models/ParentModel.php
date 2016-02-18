@@ -29,4 +29,9 @@ class ParentModel extends BaseModel
     {
         return $this->belongsTo(User::class);
     }
+
+    public function tariff()
+    {
+        return $this->belongsTo(Tariff::class);
+    }
 }

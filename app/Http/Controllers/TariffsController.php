@@ -25,7 +25,7 @@ class TariffsController extends BaseController
     public function postNew(Request $request)
     {
         $this->validate($request, Tariff::$rules);
-
+        // dd($request->all());
         $tariff = Tariff::create($request->all());
 
         return redirect()
@@ -39,6 +39,10 @@ class TariffsController extends BaseController
         $tariff = Tariff::findOrFail($id);
 
         $tariff->delete();
+
+        return redirect()
+            ->action('TariffsController@getIndex')
+            ->with('flash_message', 'Тариф <strong>"' . $tariff->name . '"</strong> удален');
 
     }
 }

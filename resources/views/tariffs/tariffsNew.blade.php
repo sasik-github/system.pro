@@ -26,7 +26,7 @@
 
         <div class="form-group">
             <label for="is_privileged">Привилегированный?</label>
-            {!! Form::checkbox('is_privileged', null, null, ['id' => 'is_privileged', 'class' => 'checkbox']) !!}
+            {!! Form::checkbox('is_privileged', 1, null, ['id' => 'is_privileged', 'class' => 'checkbox']) !!}
         </div>
 
         {!! Form::submit('Создать', ['class' => 'btn btn-primary']) !!}

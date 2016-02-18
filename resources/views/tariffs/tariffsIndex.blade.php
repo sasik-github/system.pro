@@ -19,6 +19,7 @@
                     <th>Цена</th>
                     <th>Длительность(сутки)</th>
                     <th>Привилегированный</th>
+                    <th>действия</th>
                 </tr>
             </thead>
 
@@ -29,7 +30,12 @@
                         <td>{{ $tariff->name }}</td>
                         <td>{{ $tariff->price }}</td>
                         <td>{{ $tariff->duration }}</td>
-                        <td>{{ $tariff->is_privileged }}</td>
+                        <td>
+                            {!! $tariff->is_privileged ? '<span class="glyphicon glyphicon-ok"></span>' : '' !!}
+                        </td>
+                        <td>
+                            @include('tariffs._tariffsDeleteForm', ['tariff' => $tariff])
+                        </td>
                     </tr>
                     
                 @endforeach

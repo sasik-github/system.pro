@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ParentModel;
+use App\Models\Tariff;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -16,14 +17,19 @@ class ParentsController extends BaseController
 	{
 
 		$parents = ParentModel::all();
+        $tariffs = Tariff::toSelect();
+
 		return view('parents.parentsIndex',
-			compact('parents')
+			compact('parents', 'tariffs')
 		);
 	}
 
 	public function getNew()
 	{
-		return view('parents.parentsNew');
+        $tariffs = Tariff::toSelect();
+		return view('parents.parentsNew',
+            compact('tariffs')
+            );
 	}
 
 	public function postNew(Request $request)

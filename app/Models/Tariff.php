@@ -30,5 +30,14 @@ class Tariff extends BaseModel
         'price' => 'double',
     ];
 
+    public static function toSelect()
+    {
+        $tarrifs = [];
+        $tarrifs[] = 'Нет тарифа';
+        
+        $tarrifs = array_merge($tarrifs, self::all()->pluck('name', 'id')->toArray());
+        return $tarrifs;
+    }
+
 
 }
