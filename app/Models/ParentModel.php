@@ -7,6 +7,8 @@
 
 namespace App\Models;
 
+use App\Models\User;
+
 
 class ParentModel extends BaseModel
 {
@@ -22,4 +24,9 @@ class ParentModel extends BaseModel
         'tariff_id',
         'phone_type_id',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

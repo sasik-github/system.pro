@@ -10,10 +10,25 @@ namespace App\Models;
 
 class Tariff extends BaseModel
 {
+
+    public static $rules = [
+        'name' => 'required',
+        'price' => 'required',
+        'duration' => 'required',
+    ];
+
     protected $fillable = [
         'name',
         'price',
         'duration',
-        'is_prilileged',
+        'is_privileged',
     ];
+
+    protected $casts = [
+        'is_privileged' => 'boolean',
+        'duration' => 'integer',
+        'price' => 'double',
+    ];
+
+
 }

@@ -11,13 +11,15 @@
     @include('common.errors')
 
     {!! Form::model($about, ['action' => 'AboutController@postEdit']) !!}
-
-        {{Form::textarea('text', null, ['rows' => 10, 'cols' => 80, 'id' => 'editor1'])}}
-        <script>
-            CKEDITOR.replace( 'editor1' );
-        </script>
-
-        {!! Form::submit('Сохранить') !!}
+        <div class="row">
+            {{Form::textarea('text', null, ['rows' => 10, 'cols' => 80, 'id' => 'editor1'])}}
+            <script>
+                CKEDITOR.replace( 'editor1' );
+            </script>
+        </div>
+        <div class="row">
+            {!! Form::submit('Сохранить', ['class' => 'btn btn-primary']) !!}
+        </div>
     {!! Form::close() !!}
 
 

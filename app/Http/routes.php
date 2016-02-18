@@ -34,6 +34,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::controller('about', 'AboutController');
     Route::controller('children', 'ChildrenController');
     Route::controller('parents', 'ParentsController');
+    Route::controller('tariffs', 'TariffsController');
 
 });
 
