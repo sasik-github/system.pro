@@ -14,7 +14,7 @@ class ChildrenController extends BaseController
 	
 	public function getIndex()
 	{
-		$children = Child::all();
+		$children = Child::paginate($this->itemsPerPage);
 
 		return view('children.childrenIndex',
 				compact('children')

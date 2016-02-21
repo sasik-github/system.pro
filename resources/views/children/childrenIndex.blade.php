@@ -44,6 +44,10 @@
 				@endforeach
 			</tbody>
 		</table>
+        <div class="row text-center">
+            {!! $children->links() !!}
+        </div>
+
 	</div>
 	
 @endsection
