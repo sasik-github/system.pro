@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Excel\Importer;
 use App\Models\Child;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use Maatwebsite\Excel\Readers\LaravelExcelReader;
 
 
 class ChildrenController extends BaseController
@@ -63,5 +66,13 @@ class ChildrenController extends BaseController
 		return redirect()
 			->action('ChildrenController@getIndex')
 			->with('flash_message', 'Ребенок удален');
+	}
+
+	public function getImport()
+	{
+        $pathToExcel = realpath(public_path('storage/import.XLSX'));
+        Importer::import($pathToExcel);
+
+		return view('children.childrenImport');
 	}
 }
