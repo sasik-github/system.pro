@@ -11,6 +11,8 @@ use GuzzleHttp\Client;
 class SMSGateway
 {
 
+    const FORMAT_JSON = 3;
+
     /**
      * SMSGateway constructor.
      */
@@ -37,17 +39,22 @@ class SMSGateway
             'phones' => $telephone,
             'mes' => $message,
             'charset' => 'utf-8',
+            'fmt' => self::FORMAT_JSON,
         ];
 
         $uri .= http_build_query($params);
+
+
 
         $client = new Client();
 
         $response = $client->get($uri);
 
-        var_dump($response->getStatusCode());
-        var_dump($response->getReasonPhrase());
-        var_dump($body = $response->getBody()->getContents());
+//        var_dump($uri);
+//
+//        var_dump($response->getStatusCode());
+//        var_dump($response->getReasonPhrase());
+//        var_dump(json_decode($body = $response->getBody()->getContents()));
 
     }
 }

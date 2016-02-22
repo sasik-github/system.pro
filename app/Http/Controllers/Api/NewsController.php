@@ -16,14 +16,12 @@ class NewsController extends BaseController
 
     public function index()
     {
-
         $newses = ListableNews::all();
         return $newses;
     }
 
-    public function show($id)
+    public function show(News $news)
     {
-        $news = News::findOrFail($id);
         return $news;
     }
 

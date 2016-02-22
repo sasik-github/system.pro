@@ -29,6 +29,8 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['web']], function () {
 
+    Route::auth();
+    Route::get('/home', 'HomeController@index');
 
     Route::controller('news', 'NewsController');
     Route::controller('about', 'AboutController');
@@ -38,16 +40,13 @@ Route::group(['middleware' => ['web']], function () {
 
 });
 
-Route::group(['middleware' => ['api'], 'prefix' => 'api/'], function () {
+Route::group(['prefix' => 'api/'], function () {
 
-    Route::resource('news', 'Api\NewsController');
+    Route::controller('auth', 'Api\AuthController');
 
-});
+    Route::group(['middleware' => ['api'],], function() {
+        Route::resource('news', 'Api\NewsController');
+    });
 
 
-
-Route::group(['middleware' => 'web'], function () {
-    Route::auth();
-
-    Route::get('/home', 'HomeController@index');
 });
