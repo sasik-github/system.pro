@@ -38,6 +38,14 @@ Route::group(['middleware' => ['web']], function () {
 
 });
 
+Route::group(['middleware' => ['api'], 'prefix' => 'api/'], function () {
+
+    Route::resource('news', 'Api\NewsController');
+
+});
+
+
+
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 

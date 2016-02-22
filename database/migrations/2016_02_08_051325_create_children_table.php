@@ -33,6 +33,6 @@ class CreateChildrenTable extends Migration
      */
     public function down()
     {
-        Schema::drop('childrens');
+        Schema::drop('children');
     }
 }
