@@ -7,7 +7,7 @@
 
 @section('form')
     <div class="row">
-        {!! Form::model($news, ['action' => ['NewsController@postEdit', $news->id], 'class' => 'form']) !!}
+        {!! Form::model($news, ['action' => ['NewsController@postEdit', $news->id], 'class' => 'form', 'files' => true]) !!}
 
         @include('news._newsForm', ['submitButtonText' => 'Сохранить'])
 

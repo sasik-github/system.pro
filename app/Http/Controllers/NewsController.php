@@ -8,8 +8,10 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Helpers\FileSystem;
 use App\Models\News;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class NewsController extends BaseController
 {
@@ -31,6 +33,8 @@ class NewsController extends BaseController
 //        dd($request);
         $this->validate($request, News::$rules);
 
+
+
         News::create($request->all());
 
         return redirect()
@@ -45,7 +49,7 @@ class NewsController extends BaseController
         return view('news.newsEdit', compact('news'));
     }
 
-    public function postEdit(Request $request, $id)
+    public function postEdit(Request $request, $id, FileSystem $fileSystem)
     {
         $news = News::findOrFail($id);
 

@@ -1,3 +1,5 @@
+@inject('fileSystem', 'App\Models\Helpers\FileSystem')
+
 @extends('layout.main')
 
 @section('title')
@@ -12,7 +14,7 @@
         <div class="col-md-4">
             {{--<div class="col-md-4">--}}
                 {{--<div class="center-block">--}}
-                    <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=200" alt="" class="img-responsive">
+                    <img src="{{ $news->image }}" alt="" class="img-responsive">
                 {{--</div>--}}
             {{--</div>--}}
 

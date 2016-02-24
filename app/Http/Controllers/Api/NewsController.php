@@ -16,7 +16,7 @@ class NewsController extends BaseController
 
     public function index()
     {
-        $newses = ListableNews::all();
+        $newses = News::all();
         return $newses;
     }
 

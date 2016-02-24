@@ -8,4 +8,9 @@
     {!! Form::textarea('text', null, ['class' => 'form-control']) !!}
 </div>
 
+<div class="form-group">
+    <label for="text">Картинка</label>
+    {!! Form::file('image', ['class' => '']) !!}
+</div>
+
 {!! Form::submit($submitButtonText, ['class' => 'btn btn-primary']) !!}

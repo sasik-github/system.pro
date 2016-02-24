@@ -7,7 +7,7 @@
 
 @section('form')
     <div class="row">
-        {!! Form::open(['action' => 'NewsController@postNew', 'class' => 'form']) !!}
+        {!! Form::open(['action' => 'NewsController@postNew', 'class' => 'form', 'files' => true]) !!}
 
             @include('news._newsForm', ['submitButtonText' => 'Создать'])
 
