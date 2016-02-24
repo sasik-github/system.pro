@@ -7,6 +7,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+
+    const ADMIN = 1;
+
+    const PARENT = 2;
+
+    
     /**
      * The attributes that are mass assignable.
      *
@@ -41,5 +47,18 @@ class User extends Authenticatable
     public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = bcrypt($password);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        return $this->role_id == self::ADMIN;
+    }
+
+    public function isParent()
+    {
+        return $this->role_id == self::PARENT;
     }
 }

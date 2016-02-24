@@ -9,7 +9,10 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                 Admin <span class="caret"></span>
             </a>
-            @include('common._navAdmin')    
+
+            @if (Auth::user()->isAdmin())
+                @include('common._navAdmin')
+            @endif
         </li>
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -22,4 +25,3 @@
         </li>
     @endif
 </ul>
-    

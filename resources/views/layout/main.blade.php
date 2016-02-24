@@ -19,11 +19,11 @@
 </head>
 <body>
     @include('common.nav')
-    <div class="jumbotron">
+    {{--<div class="jumbotron">--}}
         <div class="container">
             <h1>@yield('title')</h1>
         </div>
-    </div>
+    {{--</div>--}}
     <div class="container">
 
         @if (Session::has('flash_message'))

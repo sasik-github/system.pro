@@ -1,7 +1,7 @@
 @extends('layout.main')
 
 @section('title')
-    О Компании
+    {{--О Компании--}}
 @endsection
 
 @section('content')
