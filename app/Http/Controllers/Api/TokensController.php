@@ -20,7 +20,7 @@ class TokensController extends BaseController
 //$table->unsignedInteger('device_type_id');
 
     /**
-     * @api {post} /token Получить информации о пользователе, если он существует
+     * @api {post} /token Сохранить токен устройства
      * @apiName postToken
      * @apiGroup Tokens
      *
