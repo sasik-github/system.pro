@@ -60,6 +60,8 @@ class Importer
 
                 foreach($rows as $row) {
                     if (
+                        (null !== $row[0])
+                        &&
                         (null !== $row[2])
                         &&
                         ($row[2] !== 'Номер')

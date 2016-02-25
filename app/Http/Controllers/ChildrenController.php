@@ -68,11 +68,29 @@ class ChildrenController extends BaseController
 			->with('flash_message', 'Ребенок удален');
 	}
 
-	public function getImport()
+	public function getImport(Importer $importer)
 	{
-        $pathToExcel = realpath(public_path('storage/import.XLSX'));
-        Importer::import($pathToExcel);
+
+//        $importer->import($pathToExcel);
 
 		return view('children.childrenImport');
+	}
+
+	public function postImport(Request $request, Importer $importer)
+	{
+		$excelFile = $request->file('excel');
+		if (!$excelFile) {
+			return redirect()
+				->action('ChildrenController@getImport')
+				->with('error', 'Ошибка с файлом');
+		}
+//		dd($excelFile->getPathname());
+		$pathToExcel = realpath($excelFile->getPathname());
+		$importer->import($pathToExcel);
+
+		return redirect()
+			->action('ChildrenController@getImport')
+			->with('success', 'Импорт прошел успешно');
+
 	}
 }
