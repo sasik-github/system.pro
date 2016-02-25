@@ -33,8 +33,8 @@ class PasswordReseter
     public function reset(User $user)
     {
         $newPassword = $this->generatePassword();
-//        $user->password = $newPassword;
-//        $user->save();
+        $user->password = $newPassword;
+        $user->save();
 
         $this->smsGateway->send($user->telephone, $this->getMessage($newPassword));
 
