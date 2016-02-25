@@ -46,7 +46,7 @@ Route::group(['prefix' => 'api/'], function () {
     Route::resource('news', 'Api\NewsController');
 
     Route::group(['middleware' => ['api'],], function() {
-
+        Route::resource('token', 'Api\TokensController');
     });
 
 
