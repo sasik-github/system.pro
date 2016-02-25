@@ -39,6 +39,6 @@ class TokensController extends BaseController
 
         $token = $request->get('token');
 
-
+        return [];
     }
 }
