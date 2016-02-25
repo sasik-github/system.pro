@@ -54,6 +54,10 @@ class News extends Model
 
     public function getImageAttribute($image)
     {
+        if (empty($image)) {
+            return '';
+        }
+
         $fileSystem = new FileSystem();
         return $fileSystem->getPathToFile($image);
     }
