@@ -7,6 +7,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Child;
 use App\Models\ParentModel;
 use App\Models\User;
 
@@ -29,6 +30,7 @@ class UsersController extends BaseController
     public function __construct()
     {
         $this->user = auth()->user();
+        $this->parent = $this->user->parent;
     }
 
 
@@ -37,11 +39,20 @@ class UsersController extends BaseController
      */
     public function getInfo()
     {
+
         return $this->user;
     }
 
     public function getMyChildren()
     {
+
+        if (!$this->parent) {
+            /**
+             * скорее всего это админ сайта
+             */
+            return [];
+        }
+
         return $this->parent->children;
     }
 

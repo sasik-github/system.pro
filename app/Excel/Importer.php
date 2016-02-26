@@ -24,6 +24,8 @@ class Importer
 
     private $children = [];
 
+    private $async = true;
+
     /**
      * Importer constructor.
      */
@@ -76,7 +78,7 @@ class Importer
                 }
 
 
-            });
+            }, $this->async);
 
     }
     

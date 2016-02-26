@@ -28,8 +28,10 @@ class ParentRepository
 
         $user = User::create([
             'telephone' => $attributes['telephone'],
+            'name' => $attributes['fio'],
         ]);
         unset($attributes['telephone']);
+        
         $parent = ParentModel::create($attributes);
         $parent->user_id = $user->id;
         $parent->save();

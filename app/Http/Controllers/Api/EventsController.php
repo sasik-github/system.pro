@@ -8,12 +8,47 @@
 namespace App\Http\Controllers\Api;
 
 
+use App\Models\Event;
+use App\Models\Repositories\EventRepository;
 use Illuminate\Http\Request;
 
 class EventsController extends BaseController
 {
-    public function store(Request $request)
+    /**
+     * EventsController constructor.
+     */
+    public function __construct()
     {
-        $attributes = $request->all();
+        $this->middleware('api', ['only' => ['getIndex']]);
+    }
+
+
+    /**
+     *
+     * сохранить событие от турникета
+     * @param Request $request
+     * @return static
+     */
+    public function postIndex(Request $request)
+    {
+        return Event::create([$request->all()]);
+    }
+
+    /**
+     * получить события ребенка
+     *
+     * @param Request $request
+     * @param EventRepository $eventRepository
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
+    public function getIndex(Request $request, EventRepository $eventRepository, $cardNumber)
+    {
+//        $cardNumber = $request->get('card_number');
+        if (!$cardNumber) {
+            return response('Please enter a CARD NUMBER', 500);
+        }
+
+        return $eventRepository->getByCardNumber($cardNumber);
+
     }
 }
