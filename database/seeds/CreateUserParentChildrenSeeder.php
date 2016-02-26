@@ -12,6 +12,8 @@ class CreateUserParentChildrenSeeder extends Seeder
     {
 
         $parent = $this->createParent();
+        $parent->user->password = 123;
+        $parent->user->save();
 
         $children = [
             $this->createChild(),

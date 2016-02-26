@@ -24,6 +24,23 @@ class EventsController extends BaseController
 
 
     /**
+     * @api {post} /events/  Сохранить событие
+     * @apiName postEvent
+     * @apiGroup Events
+     *
+     * @apiParam {Int} card_number Номер карточки ребенка
+     * @apiParam {Int} event_type_id Тип события (Зашел = 1 / Вышел = 2)
+     *
+     *  @apiSuccessExample Success-Response:
+     *     HTTP/1.1 200 OK
+     *
+     {
+        "card_number": "87771",
+        "event_type_id": "1",
+        "updated_at": "2016-02-26 15:31:31",
+        "created_at": "2016-02-26 15:31:31",
+        "id": 10
+     }
      *
      * сохранить событие от турникета
      * @param Request $request
@@ -31,17 +48,43 @@ class EventsController extends BaseController
      */
     public function postIndex(Request $request)
     {
-        return Event::create([$request->all()]);
+        return Event::create($request->all());
     }
 
     /**
-     * получить события ребенка
+     * @api {get} /events/by-card-number/$cardNumber  Получить события по номеру каточки
+     * @apiName getByCardNumber
+     * @apiGroup Events
+     *
+     *
+     *  @apiSuccessExample Success-Response:
+     *     HTTP/1.1 200 OK
+    [
+        {
+            "id": 1,
+            "card_number": 87771,
+            "event_type_id": 1,
+            "created_at": "2016-02-26 15:01:51",
+            "updated_at": "2016-02-26 15:01:51"
+        },
+        {
+            "id": 2,
+            "card_number": 87771,
+            "event_type_id": 2,
+            "created_at": "2016-02-26 15:01:51",
+            "updated_at": "2016-02-26 15:01:51"
+        }
+    ]
+     *
+     * @apiErrorExample Error-Response:
+     * HTTP/1.1 500 Please enter a CARD NUMBER
+     *
      *
      * @param Request $request
      * @param EventRepository $eventRepository
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      */
-    public function getIndex(Request $request, EventRepository $eventRepository, $cardNumber)
+    public function getByCardNumber(Request $request, EventRepository $eventRepository, $cardNumber)
     {
 //        $cardNumber = $request->get('card_number');
         if (!$cardNumber) {
