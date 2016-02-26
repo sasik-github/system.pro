@@ -8,6 +8,7 @@
 namespace App\Http\Controllers\Api;
 
 
+use App\Models\Token;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -36,9 +37,9 @@ class TokensController extends BaseController
          * @var $user User
          */
         $user = auth()->user();
-
-        $token = $request->get('token');
-
-        return [];
+        $attributes = $request->all();
+        $attributes['user_id'] = $user->id;
+        $token = Token::create($attributes);
+        return $token;
     }
 }

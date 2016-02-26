@@ -11,4 +11,12 @@ namespace App\Models;
 class Token extends BaseModel
 {
 
+    protected $fillable = [
+        'token',
+        'device_type_id',
+        'user_id',
+    ];
+
+    public $timestamps = false;
+
 }
