@@ -4,14 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Excel\Importer;
 use App\Models\Child;
+use App\Models\Helpers\FileSystem;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
-use Maatwebsite\Excel\Readers\LaravelExcelReader;
-
 
 class ChildrenController extends BaseController
 {
-	
+
 	public function getIndex()
 	{
 		$children = Child::paginate($this->itemsPerPage);
@@ -76,8 +74,9 @@ class ChildrenController extends BaseController
 		return view('children.childrenImport');
 	}
 
-	public function postImport(Request $request, Importer $importer)
+	public function postImport(Request $request, Importer $importer, FileSystem $fileSystem)
 	{
+        set_time_limit(0);
 		$excelFile = $request->file('excel');
 		if (!$excelFile) {
 			return redirect()
@@ -85,8 +84,18 @@ class ChildrenController extends BaseController
 				->with('error', 'Ошибка с файлом');
 		}
 //		dd($excelFile->getPathname());
-		$pathToExcel = realpath($excelFile->getPathname());
+
+
+        $fileName = $fileSystem->upload($excelFile);
+		$pathToExcel = realpath(public_path($fileSystem->getPathToFile($fileName)));
+
+//        Artisan::call('excel:import', [
+//                'path' => $pathToExcel,
+//                '--queue' => 'default',
+//            ]);
 		$importer->import($pathToExcel);
+
+//        $this->dispatch(new ExcelImportJob($pathToExcel));
 
 		return redirect()
 			->action('ChildrenController@getImport')

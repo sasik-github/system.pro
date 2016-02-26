@@ -44,9 +44,11 @@ Route::group(['prefix' => 'api/'], function () {
 
     Route::controller('auth', 'Api\AuthController');
     Route::resource('news', 'Api\NewsController');
+    Route::resource('events', 'Api\EventsController');
 
     Route::group(['middleware' => ['api'],], function() {
         Route::resource('token', 'Api\TokensController');
+        Route::controller('users', 'Api\UsersController');
     });
 
 

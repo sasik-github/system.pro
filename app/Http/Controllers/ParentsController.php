@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ParentModel;
+use App\Models\Repositories\ParentRepository;
 use App\Models\Tariff;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -32,20 +33,12 @@ class ParentsController extends BaseController
             );
 	}
 
-	public function postNew(Request $request)
+	public function postNew(Request $request, ParentRepository $parentRepository)
 	{
 
 		$this->validate($request, ParentModel::$rules);
-        // dd($request->get('telephone'));
 
-        $user = User::create([
-            'telephone' => $request->get('telephone'),
-        ]);
-
-
-        $parent = ParentModel::create($request->all());
-        $parent->user_id = $user->id;
-		$parent->save();
+		$parentRepository->create($request->all());
 
         return redirect()
             ->action('ParentsController@getIndex')
