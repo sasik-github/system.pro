@@ -52,11 +52,11 @@ class EventsController extends BaseController
     }
 
     /**
-     * @api {get} /events/by-card-number/$cardNumber  Получить события по номеру каточки
+     * @api {get} /events/by-card-number/:cardNumber  Получить события по номеру каточки
      * @apiName getByCardNumber
      * @apiGroup Events
      *
-     *
+     * @apiParam {Int} cardNumber  Номер карточки
      *  @apiSuccessExample Success-Response:
      *     HTTP/1.1 200 OK
     [
