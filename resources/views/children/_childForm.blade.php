@@ -30,7 +30,7 @@
 
 <div class="form-group">
     <label for="parent_id">Родители</label>
-    {!! Form::select('parent_id[]', $parents, null, ['placeholder' => 'Выберите родителя...', 'id' => 'parent_id', 'class' => 'form-control', 'multiple' => true]) !!}
+    {!! Form::select('parent_id[]', $parents, null, ['id' => 'parent_id', 'class' => 'form-control', 'multiple' => true]) !!}
 </div>
 
 {!! Form::submit($submitButtonText, ['class' => 'btn btn-primary']) !!}
