@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Excel\Importer;
 use App\Models\Child;
 use App\Models\Helpers\FileSystem;
+use App\Models\ParentModel;
+use App\Models\Repositories\ChildRepository;
+use App\Models\Repositories\ParentRepository;
 use Illuminate\Http\Request;
 
 class ChildrenController extends BaseController
@@ -19,37 +22,45 @@ class ChildrenController extends BaseController
 		);
 	}
 
-	public function getNew()
+	public function getNew(ParentRepository $parentRepository)
 	{
-		return view('children.childrenNew');
+		$parents = $parentRepository->getParentsForSelect();
+
+		return view('children.childrenNew',
+				compact('parents')
+			);
 	}
 
-	public function postNew(Request $request)
+	public function postNew(Request $request, ChildRepository $childRepository)
 	{
 
 		$this->validate($request, Child::$rules);
 
-		Child::create($request->all());
+        $childRepository->create($request->all());
 
 		return redirect()
 			->action('ChildrenController@getIndex');
 	}
 
-	public function getEdit(Request $request, $id)
+	public function getEdit(ChildRepository $childRepository, ParentRepository $parentRepository, $id)
 	{
 		$child = Child::findOrFail($id);
 
+        $child = $childRepository->prepareForForm($child);
+
+		$parents = $parentRepository->getParentsForSelect();
+
 		return view('children.childrenEdit',
-				compact('child')
+				compact('child', 'parents')
 			);
 	}
 
-	public function postEdit(Request $request, $id)
+	public function postEdit(Request $request, ChildRepository $childRepository, $id)
 	{
 		$child = Child::findOrFail($id);
 		$this->validate($request, Child::$rules);
 
-		$child->update($request->all());
+        $childRepository->update($child, $request->all());
 
 		return redirect()
 			->action('ChildrenController@getIndex');

@@ -29,7 +29,7 @@ class Child extends BaseModel
 
     public function parents()
     {
-        return $this->belongsToMany(ParentModel::class, 'rel_parents_childrent', 'child_id', 'parent_id');
+        return $this->belongsToMany(ParentModel::class, 'rel_parents_children', 'child_id', 'parent_id');
     }
 
     public function events()

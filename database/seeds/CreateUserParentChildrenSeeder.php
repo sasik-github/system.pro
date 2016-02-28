@@ -38,7 +38,9 @@ class CreateUserParentChildrenSeeder extends Seeder
     private function createTariff()
     {
         $tariff = \App\Models\Tariff::create([
-
+            'name' => 'BestOfTheBest',
+            'price' => 123,
+            'duration' => 10,
         ]);
 
         return $tariff;
