@@ -63,7 +63,7 @@ class PushHandler
 
     private function makePush(Token $token, $data)
     {
-        $response = CloudMessaging::send($token, $data);
+        $response = CloudMessaging::send($token->token, $data);
         $code = ResponseCode::fromResponse($response);
 
         if (ResponseCode::NOT_REGISTERED === $code || ResponseCode::UNKNOWN_ERROR === $code) {
