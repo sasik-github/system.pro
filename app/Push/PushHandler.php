@@ -12,8 +12,8 @@ use App\Models\Child;
 use App\Models\Event;
 use App\Models\ParentModel;
 use App\Models\Token;
-use Sasik\GSM\CloudMessaging;
-use Sasik\GSM\ResponseCode;
+use Sasik\GCM\CloudMessaging;
+use Sasik\GCM\ResponseCode;
 
 class PushHandler
 {

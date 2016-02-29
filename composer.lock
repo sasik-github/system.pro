@@ -1868,7 +1868,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sasik-github/gcm.git",
-                "reference": "47d0528a08ed98a40a6f5c09b059d63b928c7a12"
+                "reference": "8e5c9c27f2bd9acc6c20915a64ebd89347488401"
             },
             "require": {
                 "guzzlehttp/guzzle": "^6.1",
@@ -1887,7 +1887,7 @@
                 }
             ],
             "description": "Google Cloud Messaging library",
-            "time": "2016-02-29 12:56:27"
+            "time": "2016-02-29 14:48:45"
         },
         {
             "name": "swiftmailer/swiftmailer",
