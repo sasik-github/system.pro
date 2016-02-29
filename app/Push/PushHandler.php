@@ -94,6 +94,9 @@ class PushHandler
 
     private function generatePushData(Event $event)
     {
-        return ['message' => $this->generatePushMessage($event)];
+        return [
+            'message' => $this->generatePushMessage($event),
+            'child_id' => $event->child->id,
+        ];
     }
 }
