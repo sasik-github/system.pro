@@ -69,7 +69,7 @@ class PushHandler
         if (ResponseCode::NOT_REGISTERED === $code || ResponseCode::UNKNOWN_ERROR === $code) {
             $token->delete();
         }
-        \Log::debug('PushHandler:Response', ResponseCode::getMessageFromCode($code));
+        \Log::debug('PushHandler:Response', [ResponseCode::getMessageFromCode($code)]);
         return ResponseCode::getMessageFromCode($code);
 
     }
