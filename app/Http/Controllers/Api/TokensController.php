@@ -8,6 +8,7 @@
 namespace App\Http\Controllers\Api;
 
 
+use App\Models\Repositories\TokenRepository;
 use App\Models\Token;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -32,9 +33,10 @@ class TokensController extends BaseController
      *     HTTP/1.1 200 OK
      *
      * @param Request $request
+     * @param TokenRepository $tokenRepository
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response|static
      */
-    public function store(Request $request)
+    public function store(Request $request, TokenRepository $tokenRepository)
     {
         /**
          * @var $user User
@@ -46,6 +48,17 @@ class TokensController extends BaseController
 
         $attributes = $request->all();
         $attributes['user_id'] = $user->id;
+
+        $token = $tokenRepository->getByToken($attributes['token']);
+
+        /**
+         * если токен существует, только обновляем время
+         */
+        if ($token) {
+            $token->touch();
+            return $token;
+        }
+
         $token = Token::create($attributes);
         return $token;
     }
