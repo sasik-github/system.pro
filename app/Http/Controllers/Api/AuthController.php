@@ -11,6 +11,8 @@ namespace App\Http\Controllers\Api;
 use App\Models\Helpers\PasswordReseter;
 use App\Models\Repositories\UserRepository;
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends BaseController
 {
@@ -93,15 +95,18 @@ class AuthController extends BaseController
      *
      * @apiDescription в Header простовляем Basic aутентификацию, что бы проверить telephone:pass, если все впорядке вернет 200, иначе 401
      *
-     *  @apiSuccessExample Success-Response:
+     * @apiSuccessExample Success-Response:
      *     HTTP/1.1 200 OK
-        []
+     * []
      *
      * @apiErrorExample Error-Response:
      *     HTTP/1.1 401
+     * @param Request $request
+     * @return array
      */
-    public function getAuthorization()
+    public function getAuthorization(Request $request)
     {
+        \Log::debug('Log authorization data', $request->headers->all());
         return [];
     }
 }

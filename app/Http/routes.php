@@ -11,10 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return redirect()
-    ->action('NewsController@getIndex');
-});
+Route::get('/', 'NewsController@getIndex');
 
 /*
 |--------------------------------------------------------------------------
