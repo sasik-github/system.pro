@@ -23,6 +23,7 @@ class ApiAuth
      */
     public function handle($request, \Closure $next, $guard = null)
     {
+        \Log::debug('Log authorization data', $request->headers->all());
         return Auth::onceBasic('telephone') ?: $next($request);
     }
 }

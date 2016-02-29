@@ -106,7 +106,7 @@ class AuthController extends BaseController
      */
     public function getAuthorization(Request $request)
     {
-        \Log::debug('Log authorization data', $request->headers->all());
+
         return [];
     }
 }
