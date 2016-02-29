@@ -30,6 +30,11 @@ class ParentModel extends BaseModel
         return $this->belongsTo(User::class);
     }
 
+    public function tokens()
+    {
+        return $this->hasMany(Token::class, 'user_id', 'user_id');
+    }
+
     public function children()
     {
         return $this->belongsToMany(Child::class, 'rel_parents_children', 'parent_id', 'child_id');

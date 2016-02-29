@@ -25,4 +25,9 @@ class Event extends BaseModel
         'card_number',
         'event_type_id',
     ];
+
+    public function child()
+    {
+        return $this->hasOne(Child::class, 'card_number', 'card_number');
+    }
 }

@@ -31,24 +31,26 @@ class EventsController extends BaseController
      * @apiParam {Int} card_number Номер карточки ребенка
      * @apiParam {Int} event_type_id Тип события (Зашел = 1 / Вышел = 2)
      *
-     *  @apiSuccessExample Success-Response:
+     * @apiSuccessExample Success-Response:
      *     HTTP/1.1 200 OK
      *
-     {
-        "card_number": "87771",
-        "event_type_id": "1",
-        "updated_at": "2016-02-26 15:31:31",
-        "created_at": "2016-02-26 15:31:31",
-        "id": 10
-     }
+     * {
+     * "card_number": "87771",
+     * "event_type_id": "1",
+     * "updated_at": "2016-02-26 15:31:31",
+     * "created_at": "2016-02-26 15:31:31",
+     * "id": 10
+     * }
      *
      * сохранить событие от турникета
      * @param Request $request
+     * @param EventRepository $eventRepository
      * @return static
      */
-    public function postIndex(Request $request)
+    public function postIndex(Request $request, EventRepository $eventRepository)
     {
-        return Event::create($request->all());
+        return $eventRepository->create($request->all());
+
     }
 
     /**
@@ -70,8 +72,7 @@ class EventsController extends BaseController
         {
             "id": 2,
             "card_number": 87771,
-            "event_type_id": 2,
-            "created_at": "2016-02-26 15:01:51",
+            "event_type_id": 2,            "created_at": "2016-02-26 15:01:51",
             "updated_at": "2016-02-26 15:01:51"
         }
     ]
