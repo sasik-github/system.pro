@@ -20,7 +20,7 @@ class EventsController extends BaseController
      */
     public function __construct()
     {
-        $this->middleware('api', ['only' => ['getIndex']]);
+        $this->middleware('api', ['only' => ['getByCardNumber']]);
     }
 
 
