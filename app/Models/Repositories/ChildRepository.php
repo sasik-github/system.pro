@@ -64,4 +64,13 @@ class ChildRepository
 
         return $child;
     }
+
+    /**
+     * @param $cardNumber
+     * @return Child
+     */
+    public function getChildByCardNumber($cardNumber)
+    {
+        return Child::where('card_number', $cardNumber)->first();
+    }
 }

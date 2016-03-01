@@ -9,6 +9,7 @@ namespace App\Http\Controllers\Api;
 
 
 use App\Models\Event;
+use App\Models\Repositories\ChildRepository;
 use App\Models\Repositories\EventRepository;
 use Illuminate\Http\Request;
 
@@ -45,12 +46,21 @@ class EventsController extends BaseController
      * сохранить событие от турникета
      * @param Request $request
      * @param EventRepository $eventRepository
+     * @param ChildRepository $childRepository
      * @return static
      */
-    public function postIndex(Request $request, EventRepository $eventRepository)
+    public function postIndex(Request $request, EventRepository $eventRepository, ChildRepository $childRepository)
     {
-        return $eventRepository->create($request->all());
 
+        /**
+         * проверим, есть ли ребенок с такой карточкой
+         */
+        $child = $childRepository->getChildByCardNumber($request->get('card_number'));
+        if (!$child) {
+            return response('That cardNumber doesnt exist!', 404);
+        }
+
+        return $eventRepository->create($request->all());
     }
 
     /**
