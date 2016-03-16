@@ -16,7 +16,7 @@ class EventRepository
 
     public function getByCardNumber($cardNumber)
     {
-        return Event::where('card_number', $cardNumber)->get();
+        return Event::where('card_number', $cardNumber)->orderBy('updated_at', 'desc')->get();
     }
 
     /**
