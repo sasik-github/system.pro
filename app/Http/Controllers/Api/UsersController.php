@@ -30,7 +30,7 @@ class UsersController extends BaseController
     public function __construct()
     {
         $this->user = auth()->user();
-        $this->parent = $this->user->parent;
+        $this->parent = $this->user->parent()->with('tariff')->get();
     }
 
 
@@ -66,8 +66,9 @@ class UsersController extends BaseController
      */
     public function getInfo()
     {
-
-        return $this->user;
+        $user = $this->user;
+        $user->parent = $this->parent;
+        return $user;
     }
 
     /**

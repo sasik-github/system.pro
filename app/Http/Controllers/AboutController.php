@@ -41,7 +41,9 @@ class AboutController extends BaseController
 
         $about = About::getAbout();
 
-        $about->update($request->all());
+
+        $about->fill($request->all());
+        $about->save();
 
         return redirect()
             ->action('AboutController@getEdit');
