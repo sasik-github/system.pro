@@ -67,7 +67,7 @@ class UsersController extends BaseController
     public function getInfo()
     {
         $user = $this->user;
-        $parent = $this->parent()->with('tariff')->get();
+        $parent = $this->user->parent()->with('tariff')->get();
         $user->parent = $parent;
         return $user;
     }
