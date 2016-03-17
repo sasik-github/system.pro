@@ -29,6 +29,18 @@
 </div>
 
 <div class="form-group">
+    <label for="city">Пол</label>
+    <div class="checkbox">
+        <label for="sex_female">
+            {!! Form::radio('sex', \App\Models\Child::SEX_FEMALE, null, ['id' => 'sex_female']) !!} женский
+        </label>
+        <label for="sex_male">
+            {!! Form::radio('sex', \App\Models\Child::SEX_MALE, null, ['id' => 'sex_male']) !!} мужской
+        </label>
+    </div>
+</div>
+
+<div class="form-group">
     <label for="parent_id">Родители</label>
     {!! Form::select('parent_id[]', $parents, null, ['id' => 'parent_id', 'class' => 'form-control', 'multiple' => true]) !!}
 </div>

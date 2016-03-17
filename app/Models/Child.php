@@ -11,6 +11,9 @@ namespace App\Models;
 class Child extends BaseModel
 {
 
+    const SEX_MALE = true;
+    const SEX_FEMALE = false;
+
     protected $table = 'children';
 
     protected $fillable = [
@@ -20,11 +23,16 @@ class Child extends BaseModel
         'card_number',
         'city',
         'school_number',
+        'sex'
     ];
 
     public static $rules = [
     	'fio' => 'required',
     	'class' => 'required',
+    ];
+
+    public $casts = [
+        'sex' => 'boolean',
     ];
 
     public function parents()
