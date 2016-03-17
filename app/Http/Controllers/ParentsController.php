@@ -16,11 +16,11 @@ use Illuminate\Http\Request;
 class ParentsController extends BaseController
 {
 
-    public function getIndex()
+    public function getIndex(TariffRepository $tariffRepository)
     {
 
         $parents = ParentModel::all();
-        $tariffs = Tariff::toSelect();
+        $tariffs = $tariffRepository->getTariffForSelect();
 
         return view('parents.parentsIndex',
             compact('parents', 'tariffs')

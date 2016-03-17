@@ -7,7 +7,6 @@
 
 namespace App\Models;
 
-use App\Models\User;
 
 
 class ParentModel extends BaseModel
@@ -43,5 +42,22 @@ class ParentModel extends BaseModel
     public function tariff()
     {
         return $this->belongsTo(Tariff::class);
+    }
+
+    public function getEmailAttribute($value)
+    {
+        return $this->user->email;
+    }
+
+    public function getNameAttribute($value)
+    {
+        return $this->user->name;
+    }
+
+    public function toArray()
+    {
+        $this->name;
+        $this->email;
+        $res = parent::toArray();
     }
 }
