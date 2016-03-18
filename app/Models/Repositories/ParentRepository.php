@@ -29,6 +29,7 @@ class ParentRepository
         $user = User::create([
             'telephone' => $attributes['telephone'],
             'name' => $attributes['fio'],
+            'role_id' => User::PARENT,
         ]);
         unset($attributes['telephone']);
         

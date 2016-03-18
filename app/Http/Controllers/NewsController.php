@@ -69,6 +69,15 @@ class NewsController extends BaseController
         
     }
 
+    public function getShow($id)
+    {
+        $news = News::findOrFail($id);
+
+        return view('news.newsShow',
+            compact('news')
+            );
+    }
+
     public function postDelete(Request $request)
     {
         

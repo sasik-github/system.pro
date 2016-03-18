@@ -1,3 +1,3 @@
-{!! Form::open(['action' => [$action, $id]]) !!}
-    {!! Form::submit('удалить', ['class' => 'btn btn-default'])!!}
+{!! Form::open(['action' => [$action, $id], 'class' => 'btn-group inline']) !!}
+    {!! Form::submit('удалить', ['class' => 'btn btn-danger'])!!}
 {!! Form::close() !!}
