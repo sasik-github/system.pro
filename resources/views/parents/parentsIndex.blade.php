@@ -18,7 +18,7 @@
 					<th>Ф.И.О.</th>
 					<th>Счет</th>
 					<th>Тариф</th>
-					<th>тип телефона</th>
+					{{--<th>тип телефона</th>--}}
                     <th></th>
 				</tr>
 			</thead>
@@ -35,7 +35,7 @@
 								{{ $tariffs[$parent->tariff_id] }}
 							@endif
 						</td>
-						<td>{{ $parent->phone_type_id }}</td>
+						{{--<td>{{ $parent->phone_type_id }}</td>--}}
                         <td>
                             <div class="btn-group" role="group">
                                 <!-- <div class="input-group-btn"> -->

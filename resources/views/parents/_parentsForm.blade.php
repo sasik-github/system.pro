@@ -15,10 +15,10 @@
     {!! Form::select('tariff_id', $tariffs, null, ['id' => 'tariff_id', 'class' => 'form-control']) !!}
 </div>
 
-<div class="form-group">
-    <label for="phone_type_id">Тип устройства</label>
-    {!! Form::text('phone_type_id', null, ['id' => 'phone_type_id', 'class' => 'form-control']) !!}
-</div>
+{{--<div class="form-group">--}}
+    {{--<label for="phone_type_id">Тип устройства</label>--}}
+    {{--{!! Form::text('phone_type_id', null, ['id' => 'phone_type_id', 'class' => 'form-control']) !!}--}}
+{{--</div>--}}
 
 <div class="form-group">
     <label for="telephone">Телефон</label>
