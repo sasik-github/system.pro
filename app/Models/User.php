@@ -59,6 +59,6 @@ class User extends Authenticatable
 
     public function isParent()
     {
-        return $this->role_id == self::PARENT;
+        return $this->parent ? true : false;
     }
 }

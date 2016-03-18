@@ -6,13 +6,11 @@
     @else
 
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                Admin <span class="caret"></span>
-            </a>
+            {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">--}}
+                {{--Admin <span class="caret"></span>--}}
+            {{--</a>--}}
 
-            @if (Auth::user()->isAdmin())
-                @include('common._navAdmin')
-            @endif
+
         </li>
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -20,6 +18,12 @@
             </a>
 
             <ul class="dropdown-menu" role="menu">
+                @if (Auth::user()->isParent())
+                    @include('common._navParent')
+                @elseif(Auth::user()->isAdmin())
+                    @include('common._navAdmin')
+                @endif
+                <li role="separator" class="divider"></li>
                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
             </ul>
         </li>

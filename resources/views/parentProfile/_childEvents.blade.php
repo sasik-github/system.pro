@@ -4,7 +4,7 @@
         @foreach($events as $event)
             <tr>
                 <td>{{ $event->created_at }}</td>
-                <td>{{ $event->event_type_id }}</td>
+                <td>{{ \App\Models\Repositories\EventRepository::getEventNameById($event->event_type_id) }}</td>
             </tr>
         @endforeach
     </table>

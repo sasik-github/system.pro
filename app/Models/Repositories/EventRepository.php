@@ -14,6 +14,11 @@ use App\Models\Event;
 class EventRepository
 {
 
+    private static $eventTypeNames = [
+        Event::TYPE_ENTER  => 'Вошел',
+        Event::TYPE_EXIT => 'Вышел'
+    ];
+
     public function getByCardNumber($cardNumber)
     {
         return Event::where('card_number', $cardNumber)->orderBy('updated_at', 'desc')->get();
@@ -29,5 +34,18 @@ class EventRepository
         $event = Event::create($attributes);
         event(new ChildEventWasCreated($event));
         return $event;
+    }
+
+    /**
+     * @param $id int события
+     * @return string название события
+     */
+    public static function getEventNameById($id)
+    {
+        if (!array_key_exists($id, self::$eventTypeNames)) {
+            return 'Неизвестно';
+        }
+
+        return self::$eventTypeNames[$id];
     }
 }
