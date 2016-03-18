@@ -1,1 +1,1 @@
-<li><a href="{{ action('ParentProfileController@getIndex') }}">Личный кабинет</a></li>
+<li class="{{ Ekko::isActiveMatch('profile') }}"><a href="{{ action('ParentProfileController@getIndex') }}">Личный кабинет</a></li>

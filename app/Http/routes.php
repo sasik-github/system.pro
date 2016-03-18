@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'NewsController@getIndex');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +26,10 @@ Route::get('/', 'NewsController@getIndex');
 
 Route::group(['middleware' => ['web']], function () {
 
+
+    Route::get('/', 'NewsController@redirectToNews');
+
     Route::auth();
-    Route::get('/home', 'HomeController@index');
 
     Route::controller('news', 'NewsController');
     Route::controller('about', 'AboutController');

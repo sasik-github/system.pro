@@ -16,6 +16,12 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 class NewsController extends BaseController
 {
 
+    public function redirectToNews()
+    {
+        return redirect()
+            ->action('NewsController@getIndex');
+    }
+
     public function getIndex()
     {
         $newses = News::paginate(6);

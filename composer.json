@@ -20,7 +20,8 @@
         "phpoffice/phpexcel": "^1.8",
         "barryvdh/laravel-ide-helper": "^2.1",
         "doctrine/dbal": "^2.5",
-        "sasik-github/gcm": "dev-master"
+        "sasik-github/gcm": "dev-master",
+        "laravelista/ekko": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
