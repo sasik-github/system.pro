@@ -27,5 +27,5 @@
 
 <div class="form-group">
     <label for="child_id">Дети</label>
-    {!! Form::select('child_id[]', $children, null, ['id' => 'child_id', 'class' => 'form-control', 'multiple' => true]) !!}
+    {!! Form::select('child_id[]', $children, null, ['id' => 'child_id', 'class' => 'form-control select2-multiselect', 'multiple' => true]) !!}
 </div>

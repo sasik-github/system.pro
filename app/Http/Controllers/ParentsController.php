@@ -76,4 +76,13 @@ class ParentsController extends BaseController
 
 
     }
+
+    public function postDelete($id)
+    {
+        $parent = ParentModel::findOrFail($id);
+        $parent->delete();
+
+        return redirect()
+            ->action('ParentsController@getIndex');
+    }
 }

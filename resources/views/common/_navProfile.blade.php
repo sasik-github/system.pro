@@ -24,7 +24,7 @@
                     @include('common._navAdmin')
                 @endif
                 <li role="separator" class="divider"></li>
-                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Выход</a></li>
             </ul>
         </li>
     @endif

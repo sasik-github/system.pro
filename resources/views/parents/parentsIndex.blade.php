@@ -19,6 +19,7 @@
 					<th>Счет</th>
 					<th>Тариф</th>
 					<th>тип телефона</th>
+                    <th></th>
 				</tr>
 			</thead>
 
@@ -35,7 +36,19 @@
 							@endif
 						</td>
 						<td>{{ $parent->phone_type_id }}</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <!-- <div class="input-group-btn"> -->
+                                <a href="{{ action('ParentsController@getEdit', $parent->id) }}" class="btn btn-default">редактировать</a>
+                                <div>
+                                    @include('common._deleteFormObj', ['action' => 'ParentsController@postDelete', 'id' => $parent->id])
+                                </div>
+
+                                <!-- </div> -->
+                            </div>
+                        </td>
 					</tr>
+
 					
 				@endforeach
 			</tbody>

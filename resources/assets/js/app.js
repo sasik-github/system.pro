@@ -1,8 +1,9 @@
-window.$ = window.jQuery = require('jquery');
+// window.$ = window.jQuery = require('jquery');
+//
+// require('bootstrap-sass');
 
-require('bootstrap-sass');
 
-
-$( document ).ready(function() {
-    console.log('ready');
-});
+/**
+ * пикер детей 
+ */
+$(document).ready(function() { $(".select2-multiselect").select2(); });

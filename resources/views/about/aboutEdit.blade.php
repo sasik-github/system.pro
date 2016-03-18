@@ -1,7 +1,7 @@
 @extends('layout.main')
 
 @section('title')
-    Редакитрование раздела "О Компании"
+    Редактирование раздела "О Компании"
 @endsection
 
 @section('content')
