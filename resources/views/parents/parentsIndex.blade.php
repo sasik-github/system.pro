@@ -30,7 +30,9 @@
 						<td>{{ $parent->fio }}</td>
 						<td>{{ $parent->account }}</td>
 						<td>
-							{{ $tariffs[$parent->tariff_id] }}
+							@if (array_key_exists($parent->tariff_id, $tariffs))
+								{{ $tariffs[$parent->tariff_id] }}
+							@endif
 						</td>
 						<td>{{ $parent->phone_type_id }}</td>
 					</tr>

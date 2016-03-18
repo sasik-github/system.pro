@@ -30,7 +30,10 @@ class UsersController extends BaseController
     public function __construct()
     {
         $this->user = auth()->user();
-        $this->parent = $this->user->parent;
+        if ($this->user) {
+            $this->parent = $this->user->parent;
+        }
+
     }
 
 

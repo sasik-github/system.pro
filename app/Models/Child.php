@@ -42,6 +42,8 @@ class Child extends BaseModel
 
     public function events()
     {
-        return $this->hasMany(Event::class, 'card_number', 'card_number');
+        return $this
+            ->hasMany(Event::class, 'card_number', 'card_number')
+            ->orderBy('created_at', 'desc');
     }
 }

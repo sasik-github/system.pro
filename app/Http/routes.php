@@ -35,6 +35,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::controller('parents', 'ParentsController');
     Route::controller('tariffs', 'TariffsController');
 
+    Route::get('profile', 'ParentProfileController@getIndex');
+    Route::get('profile/events/{child}', 'ParentProfileController@getEvents');
+
 });
 
 Route::group(['prefix' => 'api/'], function () {
