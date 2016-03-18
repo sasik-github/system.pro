@@ -78,9 +78,13 @@ class NewsController extends BaseController
             );
     }
 
-    public function postDelete(Request $request)
+    public function postDelete(Request $request, $id)
     {
-        
+        $news = News::findOrFail($id);
+        $news->delete();
+
+        return redirect()
+            ->action('NewsController@getIndex');
     }
 
 }
