@@ -99,7 +99,7 @@ class PushHandler
             'child_id' => $event->child->id,
             'card_number' => $event->child->card_number,
             'type' => $event->event_type_id,
-            'datetime' => $event->created_at,
+            'datetime' => $event->created_at->toDateTimeString(),
             'id' => $event->id,
         ];
     }
