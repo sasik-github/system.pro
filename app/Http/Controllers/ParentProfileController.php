@@ -13,7 +13,10 @@ use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\ParentMiddleware;
 use App\Models\Child;
 use App\Models\ParentModel;
+use App\Models\Repositories\ParentRepository;
 use App\Models\Repositories\TariffRepository;
+use App\Models\Tariff;
+use Illuminate\Http\Request;
 
 class ParentProfileController extends BaseController
 {
@@ -56,5 +59,23 @@ class ParentProfileController extends BaseController
     private function getParent()
     {
         return auth()->user()->parent;
+    }
+
+    public function getChooseTariff(TariffRepository $tariffRepository)
+    {
+        $tariffs = $tariffRepository->getTariffForSelect();
+        return view('parentProfile.parentProfileTariffs',
+            compact('tariffs')
+            );
+    }
+
+    public function postChooseTariff(Request $request, ParentRepository $parentRepository)
+    {
+
+        $tariff = Tariff::find($request->get('tariff_id'));
+        $parent = $this->getParent();
+
+        $parentRepository->chooseTariff($parent, $tariff);
+
     }
 }

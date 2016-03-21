@@ -17,7 +17,7 @@ class TariffRepository
         $tariffs = [];
         $tariffs[] = 'Нет тарифа';
 
-        $tariffs = array_merge($tariffs, Tariff::all()->pluck('name', 'id')->toArray());
+        $tariffs = Tariff::all()->pluck('name', 'id');
         return $tariffs;
     }
 }

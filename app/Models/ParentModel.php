@@ -39,9 +39,14 @@ class ParentModel extends BaseModel
         return $this->belongsToMany(Child::class, 'rel_parents_children', 'parent_id', 'child_id');
     }
 
-    public function tariff()
+//    public function tariff()
+//    {
+//        return $this->belongsTo(Tariff::class);
+//    }
+
+    public function tariffs()
     {
-        return $this->belongsTo(Tariff::class);
+        return $this->belongsToMany(Tariff::class, 'rel_parents_tariff', 'parent_id', 'tariff_id')->withPivot('deleted_at', 'created_at');
     }
 
     public function getEmailAttribute($value)
@@ -58,6 +63,16 @@ class ParentModel extends BaseModel
     {
         $this->name;
         $this->email;
-        $res = parent::toArray();
+        return $res = parent::toArray();
     }
+
+    /**
+     * @param $value
+     */
+    public function setAccount($value)
+    {
+        $this->account = $this->account + $value;
+    }
+
+
 }

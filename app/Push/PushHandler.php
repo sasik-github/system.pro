@@ -98,6 +98,8 @@ class PushHandler
             'message' => $this->generatePushMessage($event),
             'child_id' => $event->child->id,
             'card_number' => $event->child->card_number,
+            'type' => $event->event_type_id,
+            'id' => $event->id,
         ];
     }
 }

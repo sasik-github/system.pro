@@ -45,4 +45,5 @@ class TariffsController extends BaseController
             ->with('flash_message', 'Тариф <strong>"' . $tariff->name . '"</strong> удален');
 
     }
+    
 }

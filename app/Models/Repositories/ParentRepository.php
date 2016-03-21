@@ -11,6 +11,7 @@ namespace App\Models\Repositories;
 use App\Models\ParentModel;
 use App\Models\Tariff;
 use App\Models\User;
+use Carbon\Carbon;
 
 class ParentRepository
 {
@@ -87,6 +88,21 @@ class ParentRepository
         $parent->child_id = $parent->children->pluck('id')->toArray();
         $parent->telephone = $parent->user->telephone;
         return $parent;
+    }
+
+    public function chooseTariff(ParentModel $parent, Tariff $tariff)
+    {
+
+        $today = Carbon::now();
+        $tariffExpiredDate = $today->copy()->addDays($tariff->duration);
+        $parent->tariffs()->attach($tariff, [
+            'deleted_at' => $tariffExpiredDate,
+            'created_at' => $today,
+            'updated_at' => $today
+        ]);
+
+        $parent->setAccount(-$tariff->price);
+        $parent->save();
     }
 
 

@@ -85,4 +85,5 @@ class ParentsController extends BaseController
         return redirect()
             ->action('ParentsController@getIndex');
     }
+    
 }

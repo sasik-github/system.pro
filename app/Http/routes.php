@@ -39,6 +39,8 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('profile', 'ParentProfileController@getIndex');
     Route::get('profile/events/{child}', 'ParentProfileController@getEvents');
+    Route::get('profile/tariff', 'ParentProfileController@getChooseTariff');
+    Route::post('profile/tariff-submission', 'ParentProfileController@postChooseTariff');
 
 });
 

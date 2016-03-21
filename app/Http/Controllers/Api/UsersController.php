@@ -70,9 +70,11 @@ class UsersController extends BaseController
     public function getInfo()
     {
         $user = $this->user;
-        $parent = $this->user->parent()->with('tariff')->get();
-        $user->parent = $parent;
-        return $user;
+        $parent = $this->user->parent()->with('tariffs')->get();
+        $user->parent = $this->user;
+//        $parent->tariff->expire_at = $parent->tariff->created_at->addDays(5);
+//        var_dump($user->parent);
+        return $parent;
     }
 
     /**

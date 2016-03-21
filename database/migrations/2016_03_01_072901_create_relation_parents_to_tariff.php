@@ -14,9 +14,9 @@ class CreateRelationParentsToTariff extends Migration
     {
         Schema::create('rel_parents_tariff', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('parent_id');
             $table->unsignedInteger('tariff_id');
-            $table->date('deleted_at');
+            $table->timestamp('deleted_at');
             $table->timestamps();
         });
     }
