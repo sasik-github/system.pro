@@ -46,7 +46,7 @@ class ParentModel extends BaseModel
 
     public function tariffs()
     {
-        return $this->belongsToMany(Tariff::class, 'rel_parents_tariff', 'parent_id', 'tariff_id')->withPivot('deleted_at', 'created_at');
+        return $this->belongsToMany(Tariff::class, 'rel_parents_tariff', 'parent_id', 'tariff_id')->withPivot('deleted_at', 'created_at')->withTimestamps();
     }
 
     public function getEmailAttribute($value)

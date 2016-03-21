@@ -94,11 +94,9 @@ class ParentRepository
     {
 
         $today = Carbon::now();
-        $tariffExpiredDate = $today->copy()->addDays($tariff->duration);
+        $tariffExpiredDate = $today->addDays($tariff->duration);
         $parent->tariffs()->attach($tariff, [
             'deleted_at' => $tariffExpiredDate,
-            'created_at' => $today,
-            'updated_at' => $today
         ]);
 
         $parent->setAccount(-$tariff->price);
