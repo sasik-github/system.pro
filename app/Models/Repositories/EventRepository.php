@@ -124,7 +124,7 @@ class EventRepository
             $startTime = null;
             $time = 0;
             foreach ($eventsByOneDate as $event) {
-                if ($event->event_type_id === Event::TYPE_ENTER) {
+                if ($event->event_type_id == Event::TYPE_ENTER) {
                     $startTime = $event->created_at;
                 } else if ($startTime instanceof Carbon) {
                     $time += $startTime->diffInMinutes($event->created_at);
