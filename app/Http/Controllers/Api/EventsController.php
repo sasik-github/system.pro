@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Api;
 use App\Models\Event;
 use App\Models\Repositories\ChildRepository;
 use App\Models\Repositories\EventRepository;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class EventsController extends BaseController
@@ -104,5 +105,63 @@ class EventsController extends BaseController
 
         return $eventRepository->getByCardNumber($cardNumber);
 
+    }
+
+    /**
+     * @api {get} /events/stats?timestamp=:timestamp&card_number=:cardNumber  Получить стату для карточки
+     * @apiName getStatsForMonth
+     * @apiGroup Events
+     *
+     * @apiParam {Int} cardNumber  Номер карточки
+     * @apiParam {Int} timestamp  таймстэмп даты, за какой месяц получить стату
+     *  @apiSuccessExample Success-Response:
+     *     HTTP/1.1 200 OK
+     *
+    {
+        "2016-03-01": 0,
+        "2016-03-02": 0,
+        "2016-03-03": 0,
+        "2016-03-04": 0,
+        "2016-03-05": 0,
+        "2016-03-06": 0,
+        "2016-03-07": 0,
+        "2016-03-08": 0,
+        "2016-03-09": 0,
+        "2016-03-10": 0,
+        "2016-03-11": 0,
+        "2016-03-12": 0,
+        "2016-03-13": 0,
+        "2016-03-14": 0,
+        "2016-03-15": 0,
+        "2016-03-16": 0,
+        "2016-03-17": 0,
+        "2016-03-18": 0,
+        "2016-03-19": 0,
+        "2016-03-20": 0,
+        "2016-03-21": 0,
+        "2016-03-22": 0,
+        "2016-03-23": 0,
+        "2016-03-24": 0,
+        "2016-03-25": 0,
+        "2016-03-26": 28,
+        "2016-03-27": 0,
+        "2016-03-28": 0,
+        "2016-03-29": 69,
+        "2016-03-30": 0
+    }
+     *
+     * @apiErrorExample Error-Response:
+     * HTTP/1.1 500 Please enter a CARD NUMBER
+     *
+     * @param Request $request
+     * @param EventRepository $eventRepository
+     * @return array
+     */
+    public function getStatsForMonth(Request $request, EventRepository $eventRepository)
+    {
+        $date = Carbon::createFromTimestamp($request->get('timestamp'));
+        $cardNumber = $request->get('card_number');
+
+        return $eventRepository->getEventsStatByCardNumberAndDate($cardNumber, $date);
     }
 }

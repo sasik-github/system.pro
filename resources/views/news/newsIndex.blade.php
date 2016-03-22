@@ -27,7 +27,7 @@
                     <h2>{{ $news->title }}</h2>
                     <p>{{$news->text }}</p>
 
-                    <div class="btn-group" role="group" aria-label="...">
+                    <div class="btn-group" role="group" aria-label="    ">
                         <a href="{{ action('NewsController@getShow', $news->id) }}" class="btn btn-default" role="button">Подробней..</a>
                         @if (!Auth::guest())
                             @if (auth()->user()->isAdmin())

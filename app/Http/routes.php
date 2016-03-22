@@ -48,7 +48,10 @@ Route::group(['prefix' => 'api/'], function () {
 
     Route::controller('auth', 'Api\AuthController');
     Route::resource('news', 'Api\NewsController');
+
+    Route::get('events/stats', 'Api\EventsController@getStatsForMonth');
     Route::controller('events', 'Api\EventsController');
+
 
     Route::group(['middleware' => ['api'],], function() {
         Route::resource('token', 'Api\TokensController');
