@@ -62,7 +62,7 @@ class EventRepository
     private function getEventsBetweenDatesAndCardNumber($cardNumber, Carbon $firstDayOfMonth, Carbon $endDayOfMonth)
     {
         $events = Event::
-        where('card_number', $cardNumber)
+            where('card_number', $cardNumber)
             ->where([
                 ['created_at', '>=', $firstDayOfMonth->toDateTimeString()] ,
                 ['created_at', '<=', $endDayOfMonth->toDateTimeString()]
