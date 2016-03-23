@@ -42,6 +42,12 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('profile/tariff', 'ParentProfileController@getChooseTariff');
     Route::post('profile/tariff-submission', 'ParentProfileController@postChooseTariff');
 
+
+    Route::get('payment', 'PaymentController@getIndex');
+    Route::post('payment/success', 'PaymentController@postSuccess');
+    Route::post('payment/fail', 'PaymentController@postFail');
+    Route::post('payment/result', 'PaymentController@postResult');
+
 });
 
 Route::group(['prefix' => 'api/'], function () {

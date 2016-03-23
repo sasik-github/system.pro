@@ -12,7 +12,9 @@ class VerifyCsrfToken extends BaseVerifier
      * @var array
      */
     protected $except = [
-        //
+        'payment/success',
+        'payment/fail',
+        'payment/result',
     ];
 
     protected function tokensMatch($request)
