@@ -8,6 +8,11 @@
 namespace App\Excel;
 
 
+/**
+ * Class PhpExcelImporter
+ * @deprecated 
+ * @package App\Excel
+ */
 class PhpExcelImporter
 {
     public function import($pathToFile)

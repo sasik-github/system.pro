@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Excel\Importer;
+use App\Excel\SpoutImporter;
 use App\Models\Child;
 use App\Models\Helpers\FileSystem;
 use App\Models\ParentModel;
@@ -77,7 +78,7 @@ class ChildrenController extends BaseController
 			->with('flash_message', 'Ребенок удален');
 	}
 
-	public function getImport(Importer $importer)
+	public function getImport()
 	{
 
 //        $importer->import($pathToExcel);
@@ -85,32 +86,48 @@ class ChildrenController extends BaseController
 		return view('children.childrenImport');
 	}
 
-	public function postImport(Request $request, Importer $importer, FileSystem $fileSystem)
+	public function postImport(Request $request, SpoutImporter $importer, FileSystem $fileSystem)
 	{
         set_time_limit(0);
 		$excelFile = $request->file('excel');
 		if (!$excelFile) {
-			return redirect()
-				->action('ChildrenController@getImport')
-				->with('error', 'Ошибка с файлом');
+			return $this->redirectWithFileError();
 		}
-//		dd($excelFile->getPathname());
-
 
         $fileName = $fileSystem->upload($excelFile);
 		$pathToExcel = realpath(public_path($fileSystem->getPathToFile($fileName)));
 
+		if ($pathToExcel === false) {
+			return $this->redirectWithFileError();
+		}
+		
 //        Artisan::call('excel:import', [
 //                'path' => $pathToExcel,
 //                '--queue' => 'default',
 //            ]);
-		$importer->import($pathToExcel);
+
+		try {
+			$importer->import($pathToExcel);
+		} catch (\Exception $ex) {
+			return $this->redirectWithFileError();
+		}
+
 
 //        $this->dispatch(new ExcelImportJob($pathToExcel));
 
 		return redirect()
 			->action('ChildrenController@getImport')
-			->with('success', 'Импорт прошел успешно');
+			->with('flash_message', 'Импорт прошел успешно');
 
+	}
+
+	/**
+	 * @return mixed
+	 */
+	private function redirectWithFileError()
+	{
+		return redirect()
+			->action('ChildrenController@getImport')
+			->with('flash_message', 'Ошибка с файлом');
 	}
 }

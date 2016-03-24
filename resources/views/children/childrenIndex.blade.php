@@ -8,6 +8,7 @@
 
 	<div class="row">
 		<a href="{{ action('ChildrenController@getNew') }}" class="btn btn-primary">Создать</a>
+		<a href="{{ action('ChildrenController@getImport') }}" class="btn btn-default">Импорт из excel</a>
 	</div>
 
 	<div class="row">

@@ -12,6 +12,12 @@ use Symfony\Component\Console\Helper\ProgressBar;
  * Date: 2/21/16
  * Time: 3:16 PM
  */
+
+/**
+ * Class Importer
+ * @deprecated 
+ * @package App\Excel
+ */
 class Importer
 {
 

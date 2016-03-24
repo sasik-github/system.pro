@@ -10,6 +10,11 @@ namespace App\Excel;
 
 use SimpleExcel\SimpleExcel;
 
+/**
+ * Class SimpleExcelImporter
+ * @deprecated 
+ * @package App\Excel
+ */
 class SimpleExcelImporter
 {
 

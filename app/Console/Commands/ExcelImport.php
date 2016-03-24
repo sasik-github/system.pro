@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Excel\Importer;
 use App\Excel\PhpExcelImporter;
 use App\Excel\SimpleExcelImporter;
+use App\Excel\SpoutImporter;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
@@ -42,13 +43,10 @@ class ExcelImport extends Command
      */
     public function handle(Importer $importer)
     {
-//        $pathToExcel = realpath(public_path('storage/import.XLSX'));
 
-//        $progressBar = $this->output->createProgressBar();
-//        $importer->setProgressBar($progressBar);
-        $pathToExcel = $this->argument('path');
-        $this->laravelImporter($pathToExcel);
-//        $progressBar->finish();
+        $pathToExcel = public_path('files/' . $this->argument('path'));
+        $this->spoutExcelImporter($pathToExcel);
+
     }
 
     private function laravelImporter($pathToExcel)
@@ -66,6 +64,12 @@ class ExcelImport extends Command
     private function phpExcelImporter($pathToExcel)
     {
         $importer = new PhpExcelImporter();
+        $importer->import($pathToExcel);
+    }
+
+    private function spoutExcelImporter($pathToExcel)
+    {
+        $importer = new SpoutImporter();
         $importer->import($pathToExcel);
     }
 }
