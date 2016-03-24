@@ -20,9 +20,16 @@
 <body>
     @include('common.nav')
     {{--<div class="jumbotron">--}}
+    <section id="title" class="emerald">
         <div class="container">
-            <h1>@yield('title')</h1>
+            <div class="row">
+                <div class="col-sm-6">
+                    <h1>@yield('title')</h1>
+                </div>
+            </div>
         </div>
+
+    </section>
     {{--</div>--}}
     <div class="container">
 

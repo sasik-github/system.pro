@@ -18,10 +18,14 @@ var jqueryJsPath = 'node_modules/jquery/dist/jquery.min.js';
 elixir(function(mix) {
 
     mix
-        .sass('app.scss')
+        .sass(['app.scss', 'main.scss'])
         .styles([
             '../../../public/css/app.css',
             '../vendor/select2/css/select2.min.css',
+            '../vendor/flat-theme/css/font-awesome.min.css',
+            '../vendor/flat-theme/css/prettyPhoto.css',
+            '../vendor/flat-theme/css/animate.css',
+            '../vendor/flat-theme/css/main.css',
             // '../../../node_modules/select2-bootstrap-css/select2-bootstrap.min.css'
             // 'vendor/bootstrap-datetimepicker.min.css',
             // 'vendor/dropzone.css'
@@ -32,6 +36,7 @@ elixir(function(mix) {
             '../../../node_modules/jquery/dist/jquery.min.js',
             '../../../node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js',
             '../vendor/select2/js/select2.min.js',
+            '../vendor/flat-theme/js/main.js',
             'app.js'
             // '../../../node_modules/moment/min/moment-with-locales.min.js',
             // 'vendor/bootstrap-datetimepicker.min.js',
