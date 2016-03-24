@@ -3,6 +3,6 @@
     <div class="panel-body">
         <div>ФИО: {{ $parent->fio }}</div>
         <div>Счет: {{ $parent->account }}</div>
-        <div>Текущий тарифный план: {{ $parent->tariffs[0] }}
+        <div>Текущий тарифный план: {{ $parent->tariffs[0] }}</div>
     </div>
 </div>

@@ -74,5 +74,4 @@ class ParentModel extends BaseModel
         $this->account = $this->account + $value;
     }
 
-
 }

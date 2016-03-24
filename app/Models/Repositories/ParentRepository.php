@@ -103,5 +103,16 @@ class ParentRepository
         $parent->save();
     }
 
+    /**
+     * @param $telephone
+     * @return ParentModel
+     */
+    public function getParentByTelephone($telephone)
+    {
+        $user = User::where('telephone', $telephone)->first();
+
+        return $user->parent;
+    }
+
 
 }
