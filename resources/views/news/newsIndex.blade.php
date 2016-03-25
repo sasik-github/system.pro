@@ -68,9 +68,6 @@
 
     </div>
 
-    <div class="row text-center">
-        <div class="">
-            {!! $newses->links() !!}
-        </div>
-    </div>
+    {!! $newses->links(new \App\View\MyBootstrapThreePresenter($newses)) !!}
+
 @endsection
