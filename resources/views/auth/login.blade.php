@@ -5,9 +5,7 @@
 @endsection
 
 @section('content')
-<section id="registration" class="container">
-    @include('auth._loginForm')
-</section>
-
-
+    <section id="registration" class="container">
+        @include('auth._loginForm')
+    </section>
 @endsection
