@@ -48,5 +48,6 @@ elixir(function(mix) {
     mix.version(['css/all.css',  'js/all.js']);
 
     mix.copy('node_modules/bootstrap-sass/assets/fonts/bootstrap/', 'public/build/fonts/bootstrap/');
+    mix.copy('resources/assets/vendor/flat-theme/fonts', 'public/build/fonts/');
 
 });

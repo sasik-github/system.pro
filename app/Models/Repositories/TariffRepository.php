@@ -20,4 +20,9 @@ class TariffRepository
         $tariffs = Tariff::all()->pluck('name', 'id');
         return $tariffs;
     }
+
+    public function getTariffsForUser()
+    {
+        return Tariff::all();
+    }
 }

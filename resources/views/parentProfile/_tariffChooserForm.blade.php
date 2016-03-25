@@ -1,12 +1,24 @@
 {!! Form::open(['url' => 'profile/tariff-submission']) !!}
 
 
-    @foreach($tariffs as $id => $tariff)
+    @foreach($tariffs as $tariff)
 {{--        {!! var_dump([$id => $tariff]) !!}--}}
-        <label for="tariff_{{$id}}">
-            {!! Form::radio('tariff_id', $id, null, ['id' => 'tariff_' . $id]) !!} {{ $tariff }}
-        </label>
+        <div class="col-md-3 col-xs-6">
+            <ul class="plan">
+                <li class="plan-name">{{ $tariff->name }}</li>
+                <li class="plan-price">
+                    <div>
+                        <span class="price">{{ $tariff->price }}<sup>Руб</sup></span>
+                        {{--<small>в месяц</small>--}}
+                    </div>
+
+                </li>
+
+                <li><strong>{{ $tariff->duration }}</strong> дней</li>
+                <li class="plan-action"><button class="btn btn-default" name="tariff_id" value="{{$tariff->id}}">купить</button></li>
+            </ul>
+        </div>
     @endforeach
-    {!! Form::submit('Выбрать') !!}
+
 
 {!! Form::close() !!}

@@ -63,7 +63,7 @@ class ParentProfileController extends BaseController
 
     public function getChooseTariff(TariffRepository $tariffRepository)
     {
-        $tariffs = $tariffRepository->getTariffForSelect();
+        $tariffs = $tariffRepository->getTariffsForUser();
         return view('parentProfile.parentProfileTariffs',
             compact('tariffs')
             );
@@ -73,6 +73,7 @@ class ParentProfileController extends BaseController
     {
 
         $tariff = Tariff::find($request->get('tariff_id'));
+        dd($request->all());
         $parent = $this->getParent();
 
         $parentRepository->chooseTariff($parent, $tariff);

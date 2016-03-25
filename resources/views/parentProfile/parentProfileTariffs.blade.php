@@ -1,14 +1,25 @@
 @extends('layout.main')
 
 @section('title')
-Личные кабинет
+Выбор тарифа
 @endsection
 
 @section('content')
-    <h2> Выбрать тариф</h2>
+    <section id="pricing">
+        <div class="container">
+            <div class="center">
+                <h2> Ознокомьтесь с нашими тарифами</h2>
+            </div>
+            <div class="gap"></div>
+            <div id="pricing-table" class="row">
+                @include('parentProfile._tariffChooserForm')
+            </div>
+        </div>
+    </section>
+
 
     <div class="row">
-        @include('parentProfile._tariffChooserForm')
+
     </div>
 
 
