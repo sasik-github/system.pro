@@ -34,7 +34,13 @@
                                     @endif
                                     <div class="blog-content">
                                         <a href="{{ action('NewsController@getShow', $news->id) }}"><h3>{{ $news->title }}</h3></a>
+                                        <div class="entry-meta">
+                                            <span>
+                                                {{ env('app.dateformat') }}
+                                                <i class="icon-calendar"></i> {{ $news->updated_at->format(config('app.dateformat')) }}
+                                            </span>
 
+                                        </div>
                                         <p>{{$news->text }}</p>
 
                                         <div class="btn-group" role="group" aria-label="">
