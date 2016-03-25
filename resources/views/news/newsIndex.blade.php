@@ -29,8 +29,9 @@
                         <div class="col-sm-4">
                             <div class="blog-item">
                                 <div class="thumbnail">
-                                    {{$key % 3}}
-                                    <img src="{{ $news->image }}" alt="" class="img-responsive img-blog">
+                                    @if (!empty($news->image))
+                                        <img src="{{ $news->image }}" alt="" class="img-responsive img-blog">
+                                    @endif
                                     <div class="blog-content">
                                         <a href="{{ action('NewsController@getShow', $news->id) }}"><h3>{{ $news->title }}</h3></a>
 
