@@ -8,3 +8,7 @@ ul.pagination > li.active > span {
   border: none;
   color: #fff;
 }
+
+.pagination > .disabled > span {
+  border: none;
+}
