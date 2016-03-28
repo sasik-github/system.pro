@@ -21,6 +21,11 @@ class Event extends BaseModel
      */
     const TYPE_EXIT = 2;
 
+    public static $TYPES = [
+        self::TYPE_ENTER => 'Вошел',
+        self::TYPE_EXIT => 'Вышел',
+    ];
+
     protected $fillable = [
         'card_number',
         'event_type_id',

@@ -48,6 +48,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('payment/fail', 'PaymentController@postFail');
     Route::post('payment/result', 'PaymentController@postResult');
 
+    Route::get('admin/test-event', 'EventsController@getTestEvent');
+    Route::post('admin/test-event', 'EventsController@postTestEvent');
+
 });
 
 Route::group(['prefix' => 'api/'], function () {

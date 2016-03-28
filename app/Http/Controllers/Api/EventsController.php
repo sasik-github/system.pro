@@ -53,15 +53,7 @@ class EventsController extends BaseController
     public function postIndex(Request $request, EventRepository $eventRepository, ChildRepository $childRepository)
     {
 
-        /**
-         * проверим, есть ли ребенок с такой карточкой
-         */
-        $child = $childRepository->getChildByCardNumber($request->get('card_number'));
-        if (!$child) {
-            return response('That cardNumber doesnt exist!', 404);
-        }
-
-        return $eventRepository->create($request->all());
+        return $eventRepository->registerEvent($request, $childRepository);
     }
 
     /**

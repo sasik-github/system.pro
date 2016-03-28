@@ -12,6 +12,7 @@ use App\Events\ChildEventWasCreated;
 use App\Models\Event;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Request;
 
 class EventRepository
 {
@@ -159,5 +160,19 @@ class EventRepository
         }
 
         return $daysStats;
+    }
+
+    public function registerEvent(Request $request, ChildRepository $childRepository)
+    {
+        /**
+         * проверим, есть ли ребенок с такой карточкой
+         */
+        $child = $childRepository->getChildByCardNumber($request->get('card_number'));
+        
+        if (!$child) {
+            return response('That cardNumber doesnt exist!', 404);
+        }
+
+        return $this->create($request->all());
     }
 }

@@ -17,13 +17,13 @@ class VerifyCsrfToken extends BaseVerifier
         'payment/result',
     ];
 
-    protected function tokensMatch($request)
-    {
-        $tokenMatch = parent::tokensMatch($request);
-        if ($tokenMatch) {
-            $request->session()->regenerateToken();
-        }
-
-        return $tokenMatch;
-    }
+//    protected function tokensMatch($request)
+//    {
+//        $tokenMatch = parent::tokensMatch($request);
+//        if ($tokenMatch) {
+//            $request->session()->regenerateToken();
+//        }
+//
+//        return $tokenMatch;
+//    }
 }
