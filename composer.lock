@@ -1069,16 +1069,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.2.24",
+            "version": "v5.2.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "396297a5fd3c70c2fc1af68f09ee574a2380175c"
+                "reference": "b73ac62506c5c2bd49d87fcb1089f7759431e173"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/396297a5fd3c70c2fc1af68f09ee574a2380175c",
-                "reference": "396297a5fd3c70c2fc1af68f09ee574a2380175c",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/b73ac62506c5c2bd49d87fcb1089f7759431e173",
+                "reference": "b73ac62506c5c2bd49d87fcb1089f7759431e173",
                 "shasum": ""
             },
             "require": {
@@ -1193,7 +1193,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-03-22 13:45:19"
+            "time": "2016-03-25 17:12:52"
         },
         {
             "name": "laravelcollective/html",
@@ -1982,7 +1982,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sasik-github/gcm.git",
-                "reference": "8e5c9c27f2bd9acc6c20915a64ebd89347488401"
+                "reference": "3cb2f6d2ae433da96cc1f5a0c754ecc889440aad"
             },
             "require": {
                 "guzzlehttp/guzzle": "^6.1",
@@ -2001,7 +2001,7 @@
                 }
             ],
             "description": "Google Cloud Messaging library",
-            "time": "2016-02-29 14:48:45"
+            "time": "2016-03-28 05:08:34"
         },
         {
             "name": "swiftmailer/swiftmailer",
