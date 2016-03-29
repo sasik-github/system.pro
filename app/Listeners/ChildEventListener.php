@@ -138,12 +138,13 @@ class ChildEventListener
             return false;
         }
 
-        $check = $this->tariffRepository->isValidTariff($tariff);
-        if (!$check) {
+        $isValid = $this->tariffRepository->isValidTariff($tariff);
+
+        if (!$isValid) {
             event(new TariffWasExpired($parent, $tariff));
         }
 
-        return $check;
+        return $isValid;
     }
 
 
