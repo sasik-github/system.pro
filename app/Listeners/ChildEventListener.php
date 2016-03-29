@@ -3,9 +3,11 @@
 namespace App\Listeners;
 
 use App\Events\ChildEventWasCreated;
+use App\Events\TariffWasExpired;
 use App\Models\Child;
 use App\Models\Event;
 use App\Models\ParentModel;
+use App\Models\Repositories\TariffRepository;
 use App\Models\Token;
 use App\Push\PushHandler;
 
@@ -29,14 +31,20 @@ class ChildEventListener
      * @var PushHandler
      */
     private $pushHandler;
+    /**
+     * @var TariffRepository
+     */
+    private $tariffRepository;
 
     /**
      * ChildEventListener constructor.
      * @param PushHandler $pushHandler
+     * @param TariffRepository $tariffRepository
      */
-    public function __construct(PushHandler $pushHandler)
+    public function __construct(PushHandler $pushHandler, TariffRepository $tariffRepository)
     {
         $this->pushHandler = $pushHandler;
+        $this->tariffRepository = $tariffRepository;
     }
 
     public function handle(ChildEventWasCreated $childEvent)
@@ -108,13 +116,36 @@ class ChildEventListener
 
     private function handleParent(ParentModel $parent, $data)
     {
-        $tokens = $parent->tokens;
-        foreach ($tokens as $token) {
-            /**
-             * @var $token Token
-             */
-            $response = $this->pushHandler->makePush($token, $data);
+        if ($this->checkTariff($parent)) {
+            $tokens = $parent->tokens;
+            foreach ($tokens as $token) {
+                /**
+                 * @var $token Token
+                 */
+                $response = $this->pushHandler->makePush($token, $data);
 
+            }
         }
     }
+
+    /**
+     * @param ParentModel $parent
+     * @return bool
+     */
+    private function checkTariff(ParentModel $parent)
+    {
+        $tariff = $parent->tariffs->first();
+        if (!$tariff) {
+            return false;
+        }
+
+        $check = $this->tariffRepository->isValidTariff($tariff);
+        if (!$check) {
+            event(new TariffWasExpired($parent, $tariff));
+        }
+
+        return $check;
+    }
+
+
 }

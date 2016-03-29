@@ -9,6 +9,7 @@ namespace App\Models\Repositories;
 
 
 use App\Models\Tariff;
+use Carbon\Carbon;
 
 class TariffRepository
 {
@@ -24,5 +25,17 @@ class TariffRepository
     public function getTariffsForUser()
     {
         return Tariff::all();
+    }
+
+    /**
+     * @param Tariff $tariff
+     * @return bool
+     */
+    public function isValidTariff(Tariff $tariff)
+    {
+        $now = Carbon::now();
+        $deletedAt = Carbon::createFromFormat(Carbon::DEFAULT_TO_STRING_FORMAT, $tariff->pivot->deleted_at);
+
+        return $now->lt($deletedAt);
     }
 }

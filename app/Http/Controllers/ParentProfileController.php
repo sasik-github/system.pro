@@ -39,6 +39,7 @@ class ParentProfileController extends BaseController
     {
         $parent = $this->getParent();
         $tariffs = $tariffRepository->getTariffForSelect();
+        $tariffRepository->isValidTariff($parent->tariffs->first());
 
         return view('parentProfile.parentProfileIndex',
             compact('parent', 'tariffs')
