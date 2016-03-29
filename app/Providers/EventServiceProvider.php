@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Events\ChildEventWasCreated;
+use App\Events\TariffWasExpired;
 use App\Listeners\ChildEventListener;
+use App\Listeners\TariffExpiredListener;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -18,6 +20,10 @@ class EventServiceProvider extends ServiceProvider
         ChildEventWasCreated::class => [
             ChildEventListener::class
         ],
+
+        TariffWasExpired::class => [
+            TariffExpiredListener::class
+        ]
     ];
 
     /**

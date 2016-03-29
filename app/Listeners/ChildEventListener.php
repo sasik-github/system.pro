@@ -123,7 +123,6 @@ class ChildEventListener
                  * @var $token Token
                  */
                 $response = $this->pushHandler->makePush($token, $data);
-
             }
         }
     }
