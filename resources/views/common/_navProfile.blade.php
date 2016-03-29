@@ -2,15 +2,13 @@
     <!-- Authentication Links -->
     @if (Auth::guest())
         <li><a href="{{ url('/login') }}">Войти</a></li>
-        <li><a href="{{ url('/register') }}">Регистраци</a></li>
+        <li><a href="{{ url('/register') }}">Регистрация</a></li>
     @else
 
         <li class="dropdown">
             {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">--}}
                 {{--Admin <span class="caret"></span>--}}
             {{--</a>--}}
-
-
         </li>
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

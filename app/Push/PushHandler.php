@@ -18,8 +18,8 @@ use Sasik\GCM\ResponseCode;
 class PushHandler
 {
 
-    private static $ENTER = '%s только что вош%s в школу %s';
-    private static $EXIT = '%s только что выш%s из школы %s';
+    private static $ENTER = '%s только что вошeл(ла) в школу %s';
+    private static $EXIT = '%s только что вышел(ла) из школы %s';
 
     private static $SEX = [
         Child::SEX_FEMALE => 'ла',
@@ -105,7 +105,7 @@ class PushHandler
                 return '';
         }
 
-        return sprintf($message, $event->child->fio, self::$SEX[$event->child->sex], $event->created_at);
+        return sprintf($message, $event->child->fio, $event->created_at);
     }
 
     private function generatePushData(Event $event)
