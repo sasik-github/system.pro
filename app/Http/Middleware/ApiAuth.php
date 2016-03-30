@@ -8,7 +8,6 @@
 namespace App\Http\Middleware;
 
 
-use Illuminate\Support\Facades\Auth;
 
 class ApiAuth
 {
@@ -24,6 +23,6 @@ class ApiAuth
     public function handle($request, \Closure $next, $guard = null)
     {
         \Log::debug('Log authorization data', $request->headers->all());
-        return Auth::onceBasic('telephone') ?: $next($request);
+        return \Auth::onceBasic('telephone') ?: $next($request);
     }
 }

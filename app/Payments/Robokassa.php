@@ -52,7 +52,9 @@ class Robokassa
 
     public function __construct()
     {
-
+        $this->mrh_pass1 = env('ROBOKASSA_PASS1');
+        $this->mrh_pass2 = env('ROBOKASSA_PASS2');
+        $this->mrh_login = env('ROBOKASSA_LOGIN');
     }
 
     /**
