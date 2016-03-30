@@ -44,8 +44,8 @@ Route::group(['middleware' => ['web']], function () {
 
 
     Route::get('payment', 'PaymentController@getIndex');
-    Route::post('payment/success', 'PaymentController@postSuccess');
-    Route::post('payment/fail', 'PaymentController@postFail');
+    Route::get('payment/success', 'PaymentController@postSuccess');
+    Route::get('payment/fail', 'PaymentController@postFail');
     Route::post('payment/result', 'PaymentController@postResult');
 
     Route::get('admin/test-event', 'EventsController@getTestEvent');

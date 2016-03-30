@@ -1,4 +1,3 @@
-
 @extends('layout.main')
 
 @section('title')
@@ -9,7 +8,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="row">
-                <p>Введите какую сумму хотите зачислить на счет. Нажмите оплатить</p>
+                <p>Введите сумму, которую хотите перечислить на счет. Нажмите оплатить</p>
             </div>
             <div class="row">
                 {!! $button !!}

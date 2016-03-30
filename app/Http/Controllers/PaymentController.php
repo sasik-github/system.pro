@@ -33,24 +33,43 @@ class PaymentController extends BaseController
     {
 //        dd($request->all());
         if (!$robokassa->checkSuccessResponse($request->all())) {
-            return 'bad';
+            return redirect()
+                ->action('PaymentController@postFail');
         }
-        $telephone = $request->get('Shp_login');
 
-        $parent = $parentRepository->getParentByTelephone($telephone);
-        $parent->setAccount($request->get('OutSum'));
-        $parent->save();
+        $telephone = $request->get('Shp_login');
+        $summ = $request->get('OutSum');
+
+//        $parent = $parentRepository->getParentByTelephone($telephone);
+//        $parent->setAccount($summ);
+//        $parent->save();
+
+        return view('payment.paymentSuccess',
+            compact('summ')
+            );
 
     }
 
-    public function postResult(Request $request, Robokassa $robokassa)
+    public function postResult(Request $request, Robokassa $robokassa, ParentRepository $parentRepository)
     {
-        file_put_contents(public_path('robokassa.log'), var_export($request->all(), true));
-        $robokassa->checkResultResponse($request->all());
+        file_put_contents(storage_path('logs/robokassa-all.log'), var_export($request->all(), true));
+        if (!$robokassa->checkResultResponse($request->all())) {
+            return 0;
+        }
+
+        $telephone = $request->get('Shp_login');
+        $summ = $request->get('OutSum');
+        file_put_contents(storage_path('logs/robokassa-success.log'), var_export($request->all(), true));
+        $parent = $parentRepository->getParentByTelephone($telephone);
+        $parent->setAccount($summ);
+        $parent->save();
+
+        return 1;
+
     }
 
     public function postFail(Request $request)
     {
-        dd($request->all());
+        return view('payment.paymentFail');
     }
 }
