@@ -16,11 +16,4 @@
             </div>
         </div>
     </section>
-
-
-    <div class="row">
-
-    </div>
-
-
 @endsection

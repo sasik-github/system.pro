@@ -6,8 +6,15 @@
 
 @section('content')
 
-    @include('parentProfile._personalData', ['parent' => $parent])
+    <div class="row">
 
-    @include('parentProfile._personalChildrenData', ['children' => $parent->children])
+        <div class="col-sm-6">
+            @include('parentProfile._personalData', ['parent' => $parent])
+        </div>
+        <div class="col-sm-6">
+            @include('parentProfile._personalChildrenData', ['children' => $parent->children])
+        </div>
+
+    </div>
 
 @endsection

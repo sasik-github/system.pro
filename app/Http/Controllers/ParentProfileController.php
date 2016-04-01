@@ -39,10 +39,11 @@ class ParentProfileController extends BaseController
     {
         $parent = $this->getParent();
         $tariffs = $tariffRepository->getTariffForSelect();
-        var_dump($tariffRepository->isValidTariff($parent->tariffs->first()));
+
+        $tariff = $parent->tariffs->first();
 
         return view('parentProfile.parentProfileIndex',
-            compact('parent', 'tariffs')
+            compact('parent', 'tariffs', 'tariff')
             );
     }
 
@@ -75,8 +76,21 @@ class ParentProfileController extends BaseController
 
         $tariff = Tariff::find($request->get('tariff_id'));
         $parent = $this->getParent();
+        if (!$parentRepository->canBuyTariff($parent, $tariff)) {
+            return redirect()
+                ->action('ParentProfileController@getBuyTariffFail');
+        }
+
         $parentRepository->chooseTariff($parent, $tariff);
         return redirect()
             ->action('ParentProfileController@getIndex');
+    }
+
+
+    public function getBuyTariffFail()
+    {
+        return view('parentProfile.parentProfileTariffFail',
+            ['failMessage' => 'На вашем счету недостаточно средств!']
+        );
     }
 }

@@ -104,6 +104,16 @@ class ParentRepository
     }
 
     /**
+     * @param ParentModel $parent
+     * @param Tariff $tariff
+     * @return bool
+     */
+    public function canBuyTariff(ParentModel $parent, Tariff $tariff)
+    {
+        return $parent->account >= $tariff->price;
+    }
+
+    /**
      * @param $telephone
      * @return ParentModel
      */
