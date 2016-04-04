@@ -1,8 +1,8 @@
 process.env.DISABLE_NOTIFIER = true;
 
 var elixir = require('laravel-elixir');
-var bootstrapPath = 'node_modules/bootstrap-sass/assets';
-var jqueryJsPath = 'node_modules/jquery/dist/jquery.min.js';
+
+var NODE_DIRECTORY = '../../../node_modules/';
 
 /*
  |--------------------------------------------------------------------------
@@ -31,21 +31,23 @@ elixir(function(mix) {
             // 'vendor/dropzone.css'
         ]);
 
+    mix.version(['css/all.css',  'js/all.js']);
+
     mix.scripts(
         [
-            '../../../node_modules/jquery/dist/jquery.min.js',
-            '../../../node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js',
+            NODE_DIRECTORY + 'jquery/dist/jquery.min.js',
+            NODE_DIRECTORY + 'bootstrap-sass/assets/javascripts/bootstrap.min.js',
+            NODE_DIRECTORY + 'chart.js/Chart.min.js',
             '../vendor/select2/js/select2.min.js',
             '../vendor/flat-theme/js/main.js',
-            'app.js'
+            'app.js',
+            'chart.js'
             // '../../../node_modules/moment/min/moment-with-locales.min.js',
             // 'vendor/bootstrap-datetimepicker.min.js',
             // 'vendor/dropzone.js',
             // 'fileuploader.js',
         ]
     );
-
-    mix.version(['css/all.css',  'js/all.js']);
 
     mix.copy('node_modules/bootstrap-sass/assets/fonts/bootstrap/', 'public/build/fonts/bootstrap/');
     mix.copy('resources/assets/vendor/flat-theme/fonts', 'public/build/fonts/');

@@ -52,6 +52,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('admin/test-event', 'EventsController@getTestEvent');
     Route::post('admin/test-event', 'EventsController@postTestEvent');
 
+    Route::get('events/stats', 'Api\EventsController@getStatsForMonth');
+
 });
 
 Route::group(['prefix' => 'api/'], function () {

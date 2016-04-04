@@ -13,9 +13,11 @@ use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\ParentMiddleware;
 use App\Models\Child;
 use App\Models\ParentModel;
+use App\Models\Repositories\EventRepository;
 use App\Models\Repositories\ParentRepository;
 use App\Models\Repositories\TariffRepository;
 use App\Models\Tariff;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ParentProfileController extends BaseController
@@ -47,11 +49,12 @@ class ParentProfileController extends BaseController
             );
     }
 
-    public function getEvents(Child $child)
+    public function getEvents(Child $child, EventRepository $eventRepository)
     {
-        
+        $date = Carbon::now();
+        $stat = $eventRepository->getEventsStatByCardNumberAndDate($child->card_number, $date);
         return view('parentProfile.parentProfileEvents',
-            compact('child')
+            compact('child', 'stat')
             );
     }
 
