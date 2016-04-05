@@ -34,6 +34,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::controller('news', 'NewsController');
     Route::controller('about', 'AboutController');
     Route::controller('children', 'ChildrenController');
+
+    Route::get('parents/runas/{id}', 'ParentsController@runas');
     Route::controller('parents', 'ParentsController');
     Route::controller('tariffs', 'TariffsController');
 

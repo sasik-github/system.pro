@@ -85,5 +85,14 @@ class ParentsController extends BaseController
         return redirect()
             ->action('ParentsController@getIndex');
     }
+
+    public function runas($id)
+    {
+        $parent = ParentModel::findOrFail($id);
+
+        \Auth::login($parent->user);
+        return redirect('/');
+
+    }
     
 }
