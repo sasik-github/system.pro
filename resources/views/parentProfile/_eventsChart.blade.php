@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-sm-4 col-sm-push-4">
                 <div class='input-group date' id='chart_date'>
-                    <input type='text' class="form-control" />
+                    <input type='text' class="form-control" value="{{\Carbon\Carbon::now()->format(config('app.dateformat'))}}"/>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
