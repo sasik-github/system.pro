@@ -154,7 +154,6 @@ class EventsController extends BaseController
 
         $timestamp = $request->get('timestamp', time());
         $date = Carbon::createFromTimestamp($timestamp);
-        $date->addMonth(-1);
         $cardNumber = $request->get('card_number');
 
         return $eventRepository->getEventsStatByCardNumberAndDate($cardNumber, $date);
