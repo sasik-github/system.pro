@@ -18,7 +18,11 @@ var NODE_DIRECTORY = '../../../node_modules/';
 elixir(function(mix) {
 
     mix
-        .sass(['app.scss', 'main.scss'])
+        .sass([
+            'app.scss',
+            'main.scss',
+            'footer.scss'
+        ])
         .styles([
             '../../../public/css/app.css',
             '../vendor/select2/css/select2.min.css',
@@ -26,6 +30,7 @@ elixir(function(mix) {
             '../vendor/flat-theme/css/prettyPhoto.css',
             '../vendor/flat-theme/css/animate.css',
             '../vendor/flat-theme/css/main.css',
+            NODE_DIRECTORY + 'eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css'
             // '../../../node_modules/select2-bootstrap-css/select2-bootstrap.min.css'
             // 'vendor/bootstrap-datetimepicker.min.css',
             // 'vendor/dropzone.css'
@@ -38,6 +43,8 @@ elixir(function(mix) {
             NODE_DIRECTORY + 'jquery/dist/jquery.min.js',
             NODE_DIRECTORY + 'bootstrap-sass/assets/javascripts/bootstrap.min.js',
             NODE_DIRECTORY + 'chart.js/Chart.min.js',
+            NODE_DIRECTORY + 'moment/min/moment-with-locales.min.js',
+            NODE_DIRECTORY + 'eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
             '../vendor/select2/js/select2.min.js',
             '../vendor/flat-theme/js/main.js',
             'app.js',

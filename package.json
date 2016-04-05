@@ -9,6 +9,7 @@
     "bootstrap-sass": "^3.0.0",
     "browserify": "^13.0.0",
     "chart.js": "^1.1.0",
+    "eonasdan-bootstrap-datetimepicker": "^4.15.35",
     "jquery": "^2.2.0",
     "laravel-elixir": "^4.0.0",
     "select2-bootstrap-css": "^1.4.6"

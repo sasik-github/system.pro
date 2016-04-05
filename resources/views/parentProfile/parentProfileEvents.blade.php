@@ -16,7 +16,13 @@
         <canvas id="myChart" width="800" height="400"></canvas>
     </div>
     <div>
-        <input type="hidden" id="card_number" value="{{$child->card_number}}">
+        <div class='input-group date' id='chart_date'>
+            <input type='text' class="form-control" />
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+        <input type="hidden" id="chart_card_number" value="{{$child->card_number}}">
         {{ var_dump($child) }}
     </div>
 

@@ -18,30 +18,32 @@
     <![endif]-->
 </head>
 <body>
+
     @include('common.nav')
     {{--<div class="jumbotron">--}}
-    <section id="title" class="emerald">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    <h1>@yield('title')</h1>
+    {{--<div id="wrap">--}}
+        <section id="title" class="emerald">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h1>@yield('title')</h1>
+                    </div>
                 </div>
             </div>
-        </div>
 
-    </section>
-    {{--</div>--}}
-    <section class="container">
+        </section>
+        {{--</div>--}}
+        <section class="container">
 
-        @if (Session::has('flash_message'))
-            <div class="alert alert-success">
-                {!! Session::get('flash_message') !!}
-            </div>
-        @endif
+            @if (Session::has('flash_message'))
+                <div class="alert alert-success">
+                    {!! Session::get('flash_message') !!}
+                </div>
+            @endif
 
-        @yield('content')
-    </section>
-
+            @yield('content')
+        </section>
+    {{--</div> --}}{{--#wrap--}}
     @include('common.footer')
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

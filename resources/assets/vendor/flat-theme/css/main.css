@@ -74,7 +74,8 @@ a:focus {
   margin-top: -1px;
   min-width: 180px;
 }
-body > section {
+body > section,
+body > .footer > section {
   padding: 50px 0;
 }
 .turquoise,
