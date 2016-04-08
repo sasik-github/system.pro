@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\SMS\SMSGateway;
 use Illuminate\Console\Command;
+use Sasik\SmscGateway\SMSGateway;
 
 class SendSMS extends Command
 {
@@ -29,7 +29,7 @@ class SendSMS extends Command
     /**
      * Create a new command instance.
      *
-     * @return void
+     * @param SMSGateway $SMSGateway
      */
     public function __construct(SMSGateway $SMSGateway)
     {

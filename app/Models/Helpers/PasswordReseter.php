@@ -2,7 +2,7 @@
 namespace App\Models\Helpers;
 
 use App\Models\User;
-use App\SMS\SMSGateway;
+use Sasik\SmscGateway\SMSGateway;
 
 /**
  * User: sasik
