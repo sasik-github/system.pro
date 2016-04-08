@@ -32,21 +32,25 @@ class AuthController extends BaseController
      *
      * @apiParam {Number} telephone Уникальный номер телефона
      *
-     *  @apiSuccessExample Success-Response:
+     * @apiSuccessExample Success-Response:
      *     HTTP/1.1 200 OK
-    {
-        "id": 1,
-        "name": "Alex",
-        "telephone": "89516021698",
-        "email": "dart_sas@mail.ru",
-        "role_id": 1,
-        "created_at": "2016-02-25 02:24:32",
-        "updated_at": "2016-02-25 02:24:32"
-    }
+     * {
+     * "id": 1,
+     * "name": "Alex",
+     * "telephone": "89516021698",
+     * "email": "dart_sas@mail.ru",
+     * "role_id": 1,
+     * "created_at": "2016-02-25 02:24:32",
+     * "updated_at": "2016-02-25 02:24:32"
+     * }
      *
      *
      * @apiErrorExample Error-Response:
      *     HTTP/1.1 404 User not Found
+     *
+     * @param $telephone
+     * @param UserRepository $userRepository
+     * @return User
      */
     public function getUserIsExist($telephone, UserRepository $userRepository)
     {
@@ -66,13 +70,18 @@ class AuthController extends BaseController
      *
      * @apiParam {Number} telephone Уникальный номер телефона, у кого сбрасываем пароль, на этот номер придет SMS с паролем
      *
-     *  @apiSuccessExample Success-Response:
+     * @apiSuccessExample Success-Response:
      *     HTTP/1.1 200 OK
-        []
+     * []
      *
      *
      * @apiErrorExample Error-Response:
      *     HTTP/1.1 404 User not Found
+     *
+     * @param $telephone
+     * @param PasswordReseter $passwordReseter
+     * @param UserRepository $userRepository
+     * @return array
      */
     public function postResetPassword( $telephone, PasswordReseter $passwordReseter, UserRepository $userRepository)
     {
