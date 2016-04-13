@@ -85,8 +85,8 @@ class ChildEventListener
                 \Log::error("PushHandler", $event);
                 return '';
         }
-
-        return sprintf($message, $event->child->fio, $event->created_at);
+        
+        return sprintf($message, $event->child->getName(), $event->created_at);
     }
 
     private function generatePushData(Event $event)

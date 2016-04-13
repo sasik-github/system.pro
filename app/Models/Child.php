@@ -46,4 +46,21 @@ class Child extends BaseModel
             ->hasMany(Event::class, 'card_number', 'card_number')
             ->orderBy('created_at', 'desc');
     }
+
+    public function getName()
+    {
+        $partsOfFIO = explode(' ', $this->fio);
+
+        $whichPart = 1;
+        if (array_key_exists($whichPart, $partsOfFIO)) {
+            return $partsOfFIO[$whichPart];
+        }
+
+        $whichPart = 0;
+        if (array_key_exists($whichPart, $partsOfFIO)) {
+            return $partsOfFIO[$whichPart];
+        }
+
+        return $this->fio;
+    }
 }
