@@ -57,6 +57,9 @@ class TokensController extends BaseController
                 return $token;
             }
 
+            /**
+             * этот токен принадлежит другому юзеру, удалим
+             */
             $token->delete();
         }
 
