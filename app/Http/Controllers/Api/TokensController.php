@@ -49,12 +49,10 @@ class TokensController extends BaseController
         $attributes = $request->all();
         $attributes['user_id'] = $user->id;
 
-        $token = $tokenRepository->getByToken($attributes['token']);
-
         /**
          * если токен существует, только обновляем время
          */
-        if ($token) {
+        if ($token = $tokenRepository->isExist($attributes['token'], $attributes['device_type_id'])){
             $token->touch();
             return $token;
         }
