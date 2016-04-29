@@ -27,4 +27,5 @@ class About extends BaseModel
     {
         return self::find(1);
     }
+
 }

@@ -10,7 +10,7 @@
             <a class="navbar-brand" href="/">Система.ПРО</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-            @include('common._navCommon')
+            @include('common._navCommon', ['class' => 'nav navbar-nav'])
             
             @include('common._navProfile')
         </div><!--/.nav-collapse -->
